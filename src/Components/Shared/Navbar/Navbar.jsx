@@ -1,35 +1,76 @@
-import navimg1 from '../../../../public/images/bangladesh_government.png'
-import navimg2 from '../../../../public/images/educational_board.png'
+import { Link } from 'react-router-dom';
+import navimg1 from '../../../../public/images/educational_board.png'
+import navimg2 from '../../../../public/images/bangladesh_government.png'
 
 
 const Navbar = () => {
-// navlist section ------------------------------------
-const navlist =
-<>
- <li><a>Home</a></li>
- <li><a>Notice</a></li>
-<li tabIndex={1}>
-<details>
-<summary>Academic</summary>
-<ul className="p-2">
-     <li><a>Submenu 1</a></li>
-     <li><a>Submenu 2</a></li>
-</ul>
-</details>
-</li>
-<li tabIndex={1}>
-<details>
-<summary>Admission</summary>
-<ul className="p-2">
-     <li><a>Submenu 1</a></li>
-     <li><a>Submenu 2</a></li>
-</ul>
-</details>
-</li>
-<li><a>Payment</a></li>
-<li><a>Result</a></li>
-</>
-// navlist section ------------------------------------
+    // navlist section ------------------------------------
+    const navlist =
+        <>
+            <li><a>
+                <Link to="/">Home</Link>
+            </a></li>
+            <li tabIndex={0}>
+                <details>
+                    <summary>Academic</summary>
+                    <ul className="p-2 bg-gray-300">
+                        <li className='mx-16'><a></a></li>
+                        <li className='bg-yellow-200 rounded-xl mb-1'><a>
+                            <Link to="/">Our Campus</Link>
+                        </a></li>
+                        <li className='bg-yellow-200 rounded-xl mb-1'><a>
+                            <Link to="/">Academic Rules</Link>
+                        </a></li>
+                        <li className='bg-yellow-200 rounded-xl mb-1'><a>
+                            <Link to="/">Academic Calender</Link>
+                        </a></li>
+                        <li className='bg-yellow-200 rounded-xl mb-1'><a>
+                            <Link to="/">Routine</Link>
+                        </a></li>
+                    </ul>
+                </details>
+            </li>
+            <li tabIndex={0}>
+                <details>
+                    <summary>Admission</summary>
+                    <ul className="p-2 bg-gray-300">
+                        <li className='mx-16'><a></a></li>
+                        <li className='bg-yellow-200 rounded-xl mb-1'><a>
+                            <Link to="/">Apply Online</Link>
+                        </a></li>
+                        <li className='bg-yellow-200 rounded-xl mb-1'><a>
+                            <Link to="/">Apply Method</Link>
+                        </a></li>
+                    </ul>
+                </details>
+            </li>
+            <li tabIndex={0}>
+                <details>
+                    <summary>About</summary>
+                    <ul className="p-2 bg-gray-300">
+                        <li className='mx-16'><a></a></li>
+                        <li className='bg-yellow-200 rounded-xl mb-1'><a>
+                            <Link to="/">Our History</Link>
+                        </a></li>
+                        <li className='bg-yellow-200 rounded-xl mb-1'><a>
+                            <Link to="/teachers">
+                                Teachers
+                            </Link>
+                        </a></li>
+                        <li className='bg-yellow-200 rounded-xl mb-3'><a>
+                            <Link to="/employees">Employees</Link>
+                        </a></li>
+                    </ul>
+                </details>
+            </li>
+            <li><a>
+                <Link to="/">Notice</Link>
+            </a></li>
+            <li><a>
+                <Link to="/">Payment</Link>
+            </a></li>
+        </>
+    // navlist section ------------------------------------
 
     return (
         <div>
@@ -47,17 +88,16 @@ const navlist =
 
             {/* navbar section  */}
             <div>
-                <div className="navbar bg-yellow-200">
+                <div className="navbar bg-yellow-200 relative z-10">
                     <div className="navbar-start">
                         <div className="dropdown">
                             <label tabIndex={0} className="btn btn-ghost lg:hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                             </label>
-                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-yellow-200 rounded-box w-52">
                                 {navlist}
                             </ul>
                         </div>
-                        {/* <a className="btn btn-ghost normal-case text-xl">daisyUI</a> */}
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
@@ -65,7 +105,6 @@ const navlist =
                         </ul>
                     </div>
                     <div className="navbar-end">
-                        {/* <a className="btn">Button</a> */}
                     </div>
                 </div>
             </div>
