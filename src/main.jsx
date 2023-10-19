@@ -11,6 +11,7 @@ import ErrorPage from './Components/Shared/ErrorPage/ErrorPage';
 import Home from './Components/Pages/Home/Home';
 import Teachers from './Components/Pages/Teachers/Teachers';
 import Employees from './Components/Pages/Employees/Employees';
+import FullMessages from './Components/Shared/Messages/FullMessages';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path:"/employees",
         element:<Employees/>,
+      },
+      {
+        path:"/fullmessages",
+        element:<FullMessages/>,
       },
     ],
   },

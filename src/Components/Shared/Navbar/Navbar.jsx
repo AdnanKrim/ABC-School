@@ -108,6 +108,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
+            {/* banner section  */}
 
         </div>
     );
