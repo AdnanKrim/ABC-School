@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom';
 import navimg1 from '../../../../public/images/educational_board.png'
 import navimg2 from '../../../../public/images/bangladesh_government.png'
+import { useState } from 'react';
+import { Button } from '@material-tailwind/react';
 
 
 const Navbar = () => {
+
+    const [activeDropdown, setActiveDropdown] = useState(null)
+
     // navlist section ------------------------------------
     const navlist =
         <>
@@ -11,12 +16,14 @@ const Navbar = () => {
                 <Link to="/">Home</Link>
             </a></li>
             <li tabIndex={0}>
-                <details>
+                <details
+                    open={activeDropdown === 'academic'}
+                    onClick={() => setActiveDropdown('academic')}>
                     <summary>Academic</summary>
                     <ul className="p-2 bg-gray-300">
                         <li className='mx-16'><a></a></li>
                         <li className='bg-yellow-200 rounded-xl mb-1'><a>
-                            <Link to="/">Our Campus</Link>
+                            <Link to="/ourcampus">Our Campus</Link>
                         </a></li>
                         <li className='bg-yellow-200 rounded-xl mb-1'><a>
                             <Link to="/">Academic Rules</Link>
@@ -31,7 +38,9 @@ const Navbar = () => {
                 </details>
             </li>
             <li tabIndex={0}>
-                <details>
+            <details 
+            open={activeDropdown === 'admission'} 
+            onClick={() => setActiveDropdown('admission')}>
                     <summary>Admission</summary>
                     <ul className="p-2 bg-gray-300">
                         <li className='mx-16'><a></a></li>
@@ -45,7 +54,9 @@ const Navbar = () => {
                 </details>
             </li>
             <li tabIndex={0}>
-                <details>
+            <details 
+            open={activeDropdown === 'about'} 
+            onClick={() => setActiveDropdown('about')}>
                     <summary>About</summary>
                     <ul className="p-2 bg-gray-300">
                         <li className='mx-16'><a></a></li>
@@ -104,8 +115,25 @@ const Navbar = () => {
                             {navlist}
                         </ul>
                     </div>
-                    <div className="navbar-end">
-                    </div>
+{/* login and signin options  */}
+<div className="navbar-end">
+<div className="hidden gap-2 lg:flex">
+          <Button variant="text" size="sm" color="blue-gray">
+            Log In
+          </Button>
+          <Button variant="gradient" size="sm">
+            Sign In
+          </Button>
+</div>
+<div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
+          <Button variant="outlined" size="sm" color="blue-gray" fullWidth>
+            Log In
+          </Button>
+          <Button variant="gradient" size="sm" fullWidth>
+            Sign In
+          </Button>
+</div>
+</div>
                 </div>
             </div>
             {/* banner section  */}

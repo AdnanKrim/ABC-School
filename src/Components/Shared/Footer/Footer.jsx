@@ -36,11 +36,11 @@ const Footer = () => {
                     </div>
                        </div>
                     </div>
-                    {/* ------------Instagram ------------- */}
+                    {/* ------------Facebook ------------- */}
                    <div className="flex justify-center">
                     <div>
 
-                   <h3 className="text-xl text-center font-semibold">Instagram</h3>
+                   <h3 className="text-xl text-center font-semibold">Facebook</h3>
                        <hr className="mb-3 border-gray-400"/>
                        <div className="photo grid lg:grid-cols-2 md:grid-cols-3 sm: grid-cols-3 gap-3 w-60">
                            <div>

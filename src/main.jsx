@@ -12,6 +12,7 @@ import Home from './Components/Pages/Home/Home';
 import Teachers from './Components/Pages/Teachers/Teachers';
 import Employees from './Components/Pages/Employees/Employees';
 import FullMessages from './Components/Shared/Messages/FullMessages';
+import OuCampus from './Components/Pages/OuCampus/OuCampus';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home/>,
+      },
+      {
+        path: "/ourcampus",
+        element:<OuCampus/>,
       },
       {
         path:"/teachers",
