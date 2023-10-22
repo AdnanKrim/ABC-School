@@ -13,6 +13,8 @@ import Teachers from './Components/Pages/Teachers/Teachers';
 import Employees from './Components/Pages/Employees/Employees';
 import FullMessages from './Components/Shared/Messages/FullMessages';
 import OuCampus from './Components/Pages/OuCampus/OuCampus';
+import Login from './Components/Pages/Login/Login';
+import SignUp from './Components/Pages/SignUp/SignUp';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home/>,
+      },
+      {
+        path: "/login",
+        element: <Login/>,
+      },
+      {
+        path: "/signup",
+        element: <SignUp/>,
       },
       {
         path: "/ourcampus",

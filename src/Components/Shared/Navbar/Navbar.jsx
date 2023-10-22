@@ -119,18 +119,18 @@ const Navbar = () => {
 <div className="navbar-end">
 <div className="hidden gap-2 lg:flex">
           <Button variant="text" size="sm" color="blue-gray">
-            Log In
+            <a href="/login">Log In</a>
           </Button>
           <Button variant="gradient" size="sm">
-            Sign In
+            <a href="/signup">Sign Up</a>
           </Button>
 </div>
 <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
           <Button variant="outlined" size="sm" color="blue-gray" fullWidth>
-            Log In
+          <a href="/login">Log In</a>
           </Button>
           <Button variant="gradient" size="sm" fullWidth>
-            Sign In
+          <a href="/signup">Sign Up</a>
           </Button>
 </div>
 </div>
