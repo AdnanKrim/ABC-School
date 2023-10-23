@@ -42,7 +42,7 @@ const Footer = () => {
 
                    <h3 className="text-xl text-center font-semibold">Facebook</h3>
                        <hr className="mb-3 border-gray-400"/>
-                       <div className="photo grid lg:grid-cols-2 md:grid-cols-3 sm: grid-cols-3 gap-3 w-60">
+                       <div className="photo grid lg:grid-cols-2 md:grid-cols-3 sm: grid-cols-3 gap-3 w-60 ">
                            <div>
                                <img src="./images/food-table.jpg" alt=""/>
                            </div>
@@ -96,24 +96,24 @@ const Footer = () => {
                    <h3 className="text-xl font-semibold">Follow Us</h3>
                    <hr className="mb-3 border-gray-400"/>
                        <div className="flex justify-center">
-                       <ul className="text-center">
+                       <ul className="text-center ">
                            <li>
-                               <a href="#" className="flex">
-                                   <img src="./icons/facebook.svg" alt=""/>
+                               <a href="#" className="flex items-center">
+                                   <img className='bg-black rounded-full w-5 h-5 p-1' src="./icons/facebook.svg" alt=""/>
                                    <span className=" ms-3 hover:text-yellow-500" > facebook</span>
                                </a>
                            </li>
                            <li>
                                
-                            <a href="#" className="flex">
-                                <img src="./icons/instagram.svg" alt=""/>
+                            <a href="#" className="flex items-center">
+                                <img className='bg-black rounded-full w-5 h-5 p-1' src="./icons/instagram.svg" alt=""/>
                                 <span className=" ms-3 hover:text-yellow-500" >Instagram</span>
                             </a>
                         </li>
                         <li>
                                
-                            <a href="#" className="flex ">
-                                <img src="./icons/twitter.svg" alt=""/>
+                            <a href="#" className="flex items-center">
+                                <img className='bg-black rounded-full w-5 h-5 p-1' src="./icons/twitter.svg" alt=""/>
                                 <span className=" ms-3 hover:text-yellow-500" >Twitter</span>
                             </a>
                         </li>

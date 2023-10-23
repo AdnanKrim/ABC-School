@@ -2,11 +2,15 @@ import { useState } from 'react';
 import loginPhoto from '../../../../public/images/educational_board.png';
 import loginbanner from '../../../../public/images/educational_board.png';
 
-const SignUP = () => {
+const Syllabus = () => {
   const [name, setName] = useState('');
   const [father, setFather] = useState('');
   const [mother, setMother] = useState('');
   const [birthdate, setBirthdate] = useState('');
+  const [address, setAddress] = useState('');
+  const [classes, setClasses] = useState('');
+  const [section, setSection] = useState('');
+  const [roll, setRoll] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [file, setFile] = useState('');
@@ -24,6 +28,18 @@ const SignUP = () => {
   const handleBirthdateChange = (e) => {
     setBirthdate(e.target.value);
   };
+  const handleAdressChange = (e) => {
+    setAddress(e.target.value);
+  };
+  const handleClassesChange = (e) => {
+    setClasses(e.target.value);
+  };
+  const handleSectionChange = (e) => {
+    setSection(e.target.value);
+  };
+  const handleRollChange = (e) => {
+    setRoll(e.target.value);
+  };
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -40,16 +56,8 @@ const SignUP = () => {
 
   // handle button section ----------------
   const handleSubmit = (e) => {
-    console.log(name, father, mother, birthdate, email, password ,phone, file);
     e.preventDefault();
-    setName('');
-    setFather('');
-    setMother('');
-    setBirthdate('');
-    setEmail('');
-    setPassword('');
-    setFile('');
-    setPhone('');
+    console.log(name, father, mother, birthdate, address, classes, section, roll, email, password);
   };
 
 
@@ -136,18 +144,18 @@ const SignUP = () => {
 
 </div>
 
-{/* Phone and birthdate section  */}
+{/* address and birthdate section  */}
 <div className='flex gap-2 mb-3'>
-<div>
-            <label htmlFor="phone">Phone Number:</label>
+          <div>
+            <label htmlFor="address">Address:</label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder='Your Phone Number'
-              type="number"
-              name="phone"
-              id="section"
-              value={phone}
-              onChange={handlePhoneChange}
+              placeholder='Your Adress'
+              type="text"
+              name="address"
+              id="address"
+              value={address}
+              onChange={handleAdressChange}
             />
           </div>
           <div>
@@ -164,6 +172,61 @@ const SignUP = () => {
 
 </div>
 
+{/* class and roll section  */}
+<div className='flex gap-2 mb-3'>
+<div>
+            <label htmlFor="classes">Class:</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              placeholder='Your Class'
+              type="text"
+              name="class"
+              id="class"
+              value={classes}
+              onChange={handleClassesChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="roll">Roll:</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              placeholder='Your Class Roll'
+              type="text"
+              name="roll"
+              id="roll"
+              value={roll}
+              onChange={handleRollChange}
+            />
+          </div>
+
+</div>
+{/* section and phone number section  */}
+<div className='flex gap-2 mb-3'>
+<div>
+            <label htmlFor="section">Section:</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              placeholder='Your Section'
+              type="text"
+              name="section"
+              id="section"
+              value={section}
+              onChange={handleSectionChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="phone">Phone Number:</label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              placeholder='Your Phone Number'
+              type="number"
+              name="phone"
+              id="section"
+              value={phone}
+              onChange={handlePhoneChange}
+            />
+          </div>
+</div>
 
 {/* email and password section  */}
 <div className='flex gap-2 mb-3'>
@@ -228,4 +291,4 @@ const SignUP = () => {
   );
 };
 
-export default SignUP;
+export default Syllabus;

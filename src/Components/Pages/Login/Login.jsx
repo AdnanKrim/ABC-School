@@ -92,12 +92,17 @@ function Login() {
               Login
             </button>
           </div>
-            <p className='mt-3 text-sm'>If you are a student and do not have an account yet, please register : <button
+{/* extra paragraph -------------  */}
+
+ <p className='mt-3 text-sm'>If you are a student and do not have an account yet, please 
+ <div className='flex items-center'>
+ register here : <button
               className="bg-yellow-300 hover:bg-yellow-200 font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="submit"
-            >
-             <a href="/signup">Signup</a>
-            </button> </p>
+            ><a href="/signup">Signup</a></button> <span className='ms-2 me-2'>or</span>
+             <button
+              className="bg-yellow-300 hover:bg-yellow-200 font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline"><a href="/">return home</a></button>
+          </div>
+            </p>
         </form>
 
       </div>

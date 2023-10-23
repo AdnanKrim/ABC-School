@@ -15,6 +15,8 @@ import FullMessages from './Components/Shared/Messages/FullMessages';
 import OuCampus from './Components/Pages/OuCampus/OuCampus';
 import Login from './Components/Pages/Login/Login';
 import SignUp from './Components/Pages/SignUp/SignUp';
+import Payment from './Components/Pages/Payment/Payment';
+import Syllabus from './Components/Pages/Syllabus/Syllabus';
 
 const router = createBrowserRouter([
   {
@@ -49,6 +51,14 @@ const router = createBrowserRouter([
       {
         path:"/fullmessages",
         element:<FullMessages/>,
+      },
+      {
+        path:"/payment",
+        element:<Payment/>,
+      },
+      {
+        path:"/syllabus",
+        element:<Syllabus/>,
       },
     ],
   },

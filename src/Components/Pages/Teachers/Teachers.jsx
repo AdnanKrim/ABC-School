@@ -1,7 +1,18 @@
+import { useEffect, useState } from 'react';
 import unknownPhoto from '../../../../public/images/Unknown.png'
 import backgroudphoto from '../../../../public/images/tree.jpg'
 
 const Teachers = () => {
+
+const [teachers, setTeachers] = useState([]);
+
+useEffect(()=> {
+    fetch('data.json')
+    .then((res) => res.json())
+    .then((data) => setTeachers(data))
+},[])
+console.log('Teachers:', teachers);
+
     return (
 <div>
 <div
@@ -18,7 +29,7 @@ const Teachers = () => {
                         style={{ fontFamily: 'Mooli, sans-serif' }}
                         className="text-3xl text-white font-semibold "
                     >
-                        Our Teachers
+                       Our Teachers: {teachers?.length}
                     </h1>
                     <img className='w-[350px] h-[50px]' src="../../../../public/icons/hrLine.png" alt="" />
                 </div>
@@ -37,7 +48,7 @@ const Teachers = () => {
                                 <div className='flex justify-center'>
                                     <img className='w-[350px] rounded-xl bg-yellow-200' src={unknownPhoto} alt="" />
                                 </div>
-                                <h1 className='flex justify-center mt-3 font-semibold  text-2xl uppercase'>Babul</h1>
+                                <h1 className='flex justify-center mt-3 font-semibold  text-2xl uppercase'>{teachers[0]?.name}</h1>
                                 <p className='flex justify-center font-semibold  uppercase'>General Manager</p>
                             </div>
                             </div>

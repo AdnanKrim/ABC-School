@@ -34,6 +34,9 @@ const Navbar = () => {
                         <li className='bg-yellow-200 rounded-xl mb-1'><a>
                             <Link to="/">Routine</Link>
                         </a></li>
+                        <li className='bg-yellow-200 rounded-xl mb-1'><a>
+                            <Link to="/syllabus">Syllabus</Link>
+                        </a></li>
                     </ul>
                 </details>
             </li>
@@ -78,7 +81,7 @@ const Navbar = () => {
                 <Link to="/">Notice</Link>
             </a></li>
             <li><a>
-                <Link to="/">Payment</Link>
+                <Link to="/payment">Payment</Link>
             </a></li>
         </>
     // navlist section ------------------------------------
@@ -136,8 +139,6 @@ const Navbar = () => {
 </div>
                 </div>
             </div>
-            {/* banner section  */}
-
         </div>
     );
 };
