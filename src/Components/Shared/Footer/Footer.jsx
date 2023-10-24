@@ -42,25 +42,10 @@ const Footer = () => {
 
                    <h3 className="text-xl text-center font-semibold">Facebook</h3>
                        <hr className="mb-3 border-gray-400"/>
-                       <div className="photo grid lg:grid-cols-2 md:grid-cols-3 sm: grid-cols-3 gap-3 w-60 ">
+                       <div className="photo">
                            <div>
-                               <img src="./images/food-table.jpg" alt=""/>
+                               <img className='w-[250px] h-[50px]' src="../../../../public/icons/Main Logo-01.png" alt=""/>
                            </div>
-                           <div>
-                            <img src="./images/food-table.jpg" alt=""/>
-                        </div>
-                        <div>
-                            <img src="./images/food-table.jpg" alt=""/>
-                        </div>
-                        <div>
-                            <img src="./images/food-table.jpg" alt=""/>
-                        </div>
-                        <div>
-                            <img src="./images/food-table.jpg" alt=""/>
-                        </div>
-                        <div>
-                            <img src="./images/food-table.jpg" alt=""/>
-                        </div>
                        </div>
                     </div>
 
@@ -127,7 +112,7 @@ const Footer = () => {
        </footer>
        <footer className="copyright">
            <div className=" py-3 mt-16  flex justify-center bg-gray-400">
-               <h1 >copyright @ 2023. All rights reserved by <a href="#">Marketien</a></h1>
+               <h1 >copyright © 2023. All rights reserved by <a href="#">Marketien</a></h1>
            </div>
        </footer>
             </div>

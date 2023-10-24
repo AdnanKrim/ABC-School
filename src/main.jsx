@@ -17,6 +17,7 @@ import Login from './Components/Pages/Login/Login';
 import SignUp from './Components/Pages/SignUp/SignUp';
 import Payment from './Components/Pages/Payment/Payment';
 import Syllabus from './Components/Pages/Syllabus/Syllabus';
+import StudentDetails from './Components/Pages/StudentDetails/StudentDetails';
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path:"/syllabus",
         element:<Syllabus/>,
+      },
+      {
+        path:"/studentDetails",
+        element:<StudentDetails/>,
       },
     ],
   },

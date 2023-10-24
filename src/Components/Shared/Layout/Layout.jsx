@@ -5,14 +5,16 @@ import Footer from "../Footer/Footer";
 
 const Layout = () => {
 
-const location = useLocation();
-const noHeaderFooter = location.pathname.includes('login') || location.pathname.includes('signup') ;
+    const location = useLocation();
+    const noHeaderFooter = location.pathname.includes('login') ||
+        location.pathname.includes('signup') ||
+        location.pathname.includes('studentDetails');
 
     return (
         <div>
-            { noHeaderFooter|| <Navbar/>}
-            <Outlet/>
-            {noHeaderFooter || <Footer/>}
+            {noHeaderFooter || <Navbar />}
+            <Outlet />
+            {noHeaderFooter || <Footer />}
         </div>
     );
 };

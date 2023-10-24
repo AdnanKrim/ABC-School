@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import loginPhoto from '../../../../public/images/educational_board.png';
 import loginbanner from '../../../../public/images/educational_board.png';
+import marketien from '../../../../public/icons/Main Logo-01.png'
 
 const SignUP = () => {
   const [name, setName] = useState('');
@@ -110,6 +111,7 @@ const SignUP = () => {
 <div className='flex gap-2 mb-3'>
 
 <div>
+               {/* eslint-disable-next-line react/no-unescaped-entities */}
             <label htmlFor="father">Father's Name:</label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -122,6 +124,7 @@ const SignUP = () => {
             />
           </div>
           <div>
+{/* eslint-disable-next-line react/no-unescaped-entities */}
             <label htmlFor="mother">Mother's Name:</label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -221,8 +224,9 @@ const SignUP = () => {
                 className="bg-yellow-300 hover:bg-yellow-200 font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline"><a href="/">return home</a></button>
             </div>
           </p>
-
-        </form>
+          <hr  className='my-5 border border-yellow-300'/>
+      <h1 className='flex justify-center items-center'>copyright © <img className='w-[120px] ms-2' src={marketien} alt="" /></h1>
+       </form>
       </div>
     </div>
   );

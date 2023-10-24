@@ -22,21 +22,21 @@ const Navbar = () => {
                     <summary>Academic</summary>
                     <ul className="p-2 bg-gray-300">
                         <li className='mx-16'><a></a></li>
-                        <li className='bg-yellow-200 rounded-xl mb-1'><a>
+                        <li className='bg-yellow-200 rounded-xl mb-1'>
                             <Link to="/ourcampus">Our Campus</Link>
-                        </a></li>
-                        <li className='bg-yellow-200 rounded-xl mb-1'><a>
+                        </li>
+                        <li className='bg-yellow-200 rounded-xl mb-1'>
                             <Link to="/">Academic Rules</Link>
-                        </a></li>
-                        <li className='bg-yellow-200 rounded-xl mb-1'><a>
+                        </li>
+                        <li className='bg-yellow-200 rounded-xl mb-1'>
                             <Link to="/">Academic Calender</Link>
-                        </a></li>
-                        <li className='bg-yellow-200 rounded-xl mb-1'><a>
+                        </li>
+                        <li className='bg-yellow-200 rounded-xl mb-1'>
                             <Link to="/">Routine</Link>
-                        </a></li>
-                        <li className='bg-yellow-200 rounded-xl mb-1'><a>
+                        </li>
+                        <li className='bg-yellow-200 rounded-xl mb-1'>
                             <Link to="/syllabus">Syllabus</Link>
-                        </a></li>
+                        </li>
                     </ul>
                 </details>
             </li>
@@ -47,12 +47,12 @@ const Navbar = () => {
                     <summary>Admission</summary>
                     <ul className="p-2 bg-gray-300">
                         <li className='mx-16'><a></a></li>
-                        <li className='bg-yellow-200 rounded-xl mb-1'><a>
+                        <li className='bg-yellow-200 rounded-xl mb-1'>
                             <Link to="/">Apply Online</Link>
-                        </a></li>
-                        <li className='bg-yellow-200 rounded-xl mb-1'><a>
+                        </li>
+                        <li className='bg-yellow-200 rounded-xl mb-1'>
                             <Link to="/">Apply Method</Link>
-                        </a></li>
+                        </li>
                     </ul>
                 </details>
             </li>
@@ -63,26 +63,26 @@ const Navbar = () => {
                     <summary>About</summary>
                     <ul className="p-2 bg-gray-300">
                         <li className='mx-16'><a></a></li>
-                        <li className='bg-yellow-200 rounded-xl mb-1'><a>
+                        <li className='bg-yellow-200 rounded-xl mb-1'>
                             <Link to="/">Our History</Link>
-                        </a></li>
-                        <li className='bg-yellow-200 rounded-xl mb-1'><a>
+                        </li>
+                        <li className='bg-yellow-200 rounded-xl mb-1'>
                             <Link to="/teachers">
                                 Teachers
                             </Link>
-                        </a></li>
-                        <li className='bg-yellow-200 rounded-xl mb-3'><a>
+                        </li>
+                        <li className='bg-yellow-200 rounded-xl mb-3'>
                             <Link to="/employees">Employees</Link>
-                        </a></li>
+                        </li>
                     </ul>
                 </details>
             </li>
-            <li><a>
+            <li>
                 <Link to="/">Notice</Link>
-            </a></li>
-            <li><a>
+            </li>
+            <li>
                 <Link to="/payment">Payment</Link>
-            </a></li>
+            </li>
         </>
     // navlist section ------------------------------------
 

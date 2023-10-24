@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import loginPhoto from '../../../../public/images/educational_board.png';
 import loginbanner from '../../../../public/images/educational_board.png';
+import marketien from '../../../../public/icons/Main Logo-01.png'
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -103,6 +104,8 @@ function Login() {
               className="bg-yellow-300 hover:bg-yellow-200 font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline"><a href="/">return home</a></button>
           </div>
             </p>
+            <hr  className='my-5 border border-yellow-300'/>
+      <h1 className='flex justify-center items-center'>copyright © <img className='w-[120px] ms-2' src={marketien} alt="" /></h1>
         </form>
 
       </div>
