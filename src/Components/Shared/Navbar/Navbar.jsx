@@ -20,21 +20,21 @@ const Navbar = () => {
                     open={activeDropdown === 'academic'}
                     onClick={() => setActiveDropdown('academic')}>
                     <summary>Academic</summary>
-                    <ul className="p-2 bg-gray-300">
+                    <ul className="p-2 bg-blue-500">
                         <li className='mx-16'><a></a></li>
-                        <li className='bg-yellow-200 rounded-xl mb-1'>
+                        <li className='bg-blue-200 rounded-xl mb-1'>
                             <Link to="/ourcampus">Our Campus</Link>
                         </li>
-                        <li className='bg-yellow-200 rounded-xl mb-1'>
+                        <li className='bg-blue-200 rounded-xl mb-1'>
                             <Link to="/">Academic Rules</Link>
                         </li>
-                        <li className='bg-yellow-200 rounded-xl mb-1'>
+                        <li className='bg-blue-200 rounded-xl mb-1'>
                             <Link to="/">Academic Calender</Link>
                         </li>
-                        <li className='bg-yellow-200 rounded-xl mb-1'>
+                        <li className='bg-blue-200 rounded-xl mb-1'>
                             <Link to="/">Routine</Link>
                         </li>
-                        <li className='bg-yellow-200 rounded-xl mb-1'>
+                        <li className='bg-blue-200 rounded-xl mb-1'>
                             <Link to="/syllabus">Syllabus</Link>
                         </li>
                     </ul>
@@ -45,12 +45,12 @@ const Navbar = () => {
             open={activeDropdown === 'admission'} 
             onClick={() => setActiveDropdown('admission')}>
                     <summary>Admission</summary>
-                    <ul className="p-2 bg-gray-300">
+                    <ul className="p-2 bg-blue-500">
                         <li className='mx-16'><a></a></li>
-                        <li className='bg-yellow-200 rounded-xl mb-1'>
+                        <li className='bg-blue-200 rounded-xl mb-1'>
                             <Link to="/">Apply Online</Link>
                         </li>
-                        <li className='bg-yellow-200 rounded-xl mb-1'>
+                        <li className='bg-blue-200 rounded-xl mb-1'>
                             <Link to="/">Apply Method</Link>
                         </li>
                     </ul>
@@ -61,17 +61,17 @@ const Navbar = () => {
             open={activeDropdown === 'about'} 
             onClick={() => setActiveDropdown('about')}>
                     <summary>About</summary>
-                    <ul className="p-2 bg-gray-300">
+                    <ul className="p-2 bg-blue-500">
                         <li className='mx-16'><a></a></li>
-                        <li className='bg-yellow-200 rounded-xl mb-1'>
+                        <li className='bg-blue-200 rounded-xl mb-1'>
                             <Link to="/">Our History</Link>
                         </li>
-                        <li className='bg-yellow-200 rounded-xl mb-1'>
+                        <li className='bg-blue-200 rounded-xl mb-1'>
                             <Link to="/teachers">
                                 Teachers
                             </Link>
                         </li>
-                        <li className='bg-yellow-200 rounded-xl mb-3'>
+                        <li className='bg-blue-200 rounded-xl mb-3'>
                             <Link to="/employees">Employees</Link>
                         </li>
                     </ul>
@@ -102,13 +102,13 @@ const Navbar = () => {
 
             {/* navbar section  */}
             <div>
-                <div className="navbar bg-yellow-200 relative z-10">
+                <div className="navbar bg-blue-200 relative z-10">
                     <div className="navbar-start">
                         <div className="dropdown">
                             <label tabIndex={0} className="btn btn-ghost lg:hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                             </label>
-                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-yellow-200 rounded-box w-52">
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-blue-200 rounded-box w-52">
                                 {navlist}
                             </ul>
                         </div>
@@ -121,7 +121,7 @@ const Navbar = () => {
 {/* login and signin options  */}
 <div className="navbar-end">
 <div className="hidden gap-2 lg:flex">
-          <Button variant="text" size="sm" color="blue-gray">
+          <Button variant="text" size="sm" color="blue-gray"  className='text-white border'>
             <a href="/login">Log In</a>
           </Button>
           <Button variant="gradient" size="sm">
@@ -129,7 +129,7 @@ const Navbar = () => {
           </Button>
 </div>
 <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
-          <Button variant="outlined" size="sm" color="blue-gray" fullWidth>
+          <Button className='text-white' variant="gradient" size="sm" fullWidth>
           <a href="/login">Log In</a>
           </Button>
           <Button variant="gradient" size="sm" fullWidth>

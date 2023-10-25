@@ -18,6 +18,8 @@ import SignUp from './Components/Pages/SignUp/SignUp';
 import Payment from './Components/Pages/Payment/Payment';
 import Syllabus from './Components/Pages/Syllabus/Syllabus';
 import StudentDetails from './Components/Pages/StudentDetails/StudentDetails';
+import AdminPanel from './Components/Pages/AdminPanel/AdminPanel';
+import AdminStudentInfo from './Components/Pages/AdminPanel/Navigation/AdminStudentInfo';
 
 const router = createBrowserRouter([
   {
@@ -64,6 +66,10 @@ const router = createBrowserRouter([
       {
         path:"/studentDetails",
         element:<StudentDetails/>,
+      },
+      {
+        path:"/defaultPanel",
+        element:<AdminPanel/>
       },
     ],
   },

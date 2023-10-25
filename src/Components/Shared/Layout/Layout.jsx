@@ -8,7 +8,8 @@ const Layout = () => {
     const location = useLocation();
     const noHeaderFooter = location.pathname.includes('login') ||
         location.pathname.includes('signup') ||
-        location.pathname.includes('studentDetails');
+        location.pathname.includes('studentDetails') ||
+        location.pathname.includes('defaultPanel');
 
     return (
         <div>

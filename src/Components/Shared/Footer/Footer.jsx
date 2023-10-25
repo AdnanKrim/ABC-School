@@ -2,7 +2,7 @@ import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
 
 const Footer = () => {
     return (
-<div className="sm: ms-2 sm: me-2 lg:ms-0 lg:me-0 mt-36 bg-yellow-200 pt-10">
+<div className="sm: ms-2 sm: me-2 lg:ms-0 lg:me-0 mt-36 bg-blue-200 pt-10">
             <div>
             <footer className="max-w-screen-xl mx-auto ">
            <div className="">
@@ -11,7 +11,7 @@ const Footer = () => {
                    <div className="">
                     <div className="text-center">
                        <h3 className="flex justify-center text-xl font-semibold">Contact Us</h3>
-                       <hr className="mb-3 border-gray-400"/>
+                       <hr className="mb-3 border-green-500"/>
                        <div className=''>
                         <div className="flex items-center mb-2">
                             <FaMapMarkerAlt className="text-2xl mr-3 " />
@@ -41,7 +41,7 @@ const Footer = () => {
                     <div>
 
                    <h3 className="text-xl text-center font-semibold">Facebook</h3>
-                       <hr className="mb-3 border-gray-400"/>
+                       <hr className="mb-3 border-green-500"/>
                        <div className="photo">
                            <div>
                                <img className='w-[250px] h-[50px]' src="../../../../public/icons/Main Logo-01.png" alt=""/>
@@ -53,7 +53,7 @@ const Footer = () => {
                    {/* ------------Quick Links ------------- */}
                    <div className="text-center">
                    <h3 className="text-xl font-semibold">Quick Links</h3>
-                   <hr className="mb-3 border-gray-400"/>
+                   <hr className="mb-3 border-green-500"/>
                     <div className="">
                     <ul>
                         <li>
@@ -79,7 +79,7 @@ const Footer = () => {
                     <div>
 
                    <h3 className="text-xl font-semibold">Follow Us</h3>
-                   <hr className="mb-3 border-gray-400"/>
+                   <hr className="mb-3 border-green-500"/>
                        <div className="flex justify-center">
                        <ul className="text-center ">
                            <li>
@@ -111,8 +111,8 @@ const Footer = () => {
            </div>
        </footer>
        <footer className="copyright">
-           <div className=" py-3 mt-16  flex justify-center bg-gray-400">
-               <h1 >copyright © 2023. All rights reserved by <a href="#">Marketien</a></h1>
+           <div className=" py-3 mt-16  flex justify-center bg-blue-600 text-white font-semibold">
+               <h1 >copyright © 2023. All rights reserved by <a href="https://marketien.online/" className='hover:underline' target='blank'>Marketien</a></h1>
            </div>
        </footer>
             </div>
