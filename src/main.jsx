@@ -19,7 +19,8 @@ import Payment from './Components/Pages/Payment/Payment';
 import Syllabus from './Components/Pages/Syllabus/Syllabus';
 import StudentDetails from './Components/Pages/StudentDetails/StudentDetails';
 import AdminPanel from './Components/Pages/AdminPanel/AdminPanel';
-import AdminStudentInfo from './Components/Pages/AdminPanel/Navigation/AdminStudentInfo';
+import PendingStudent from './Components/Pages/AdminPanel/Navigation/PendingStudent';
+import AllStudent from './Components/Pages/AdminPanel/Navigation/AllStudent';
 
 const router = createBrowserRouter([
   {
@@ -67,9 +68,18 @@ const router = createBrowserRouter([
         path:"/studentDetails",
         element:<StudentDetails/>,
       },
+// admin panel route ------------------------
       {
         path:"/defaultPanel",
         element:<AdminPanel/>
+      },
+      {
+        path:"/pendingStudent",
+        element:<PendingStudent/>
+      },
+      {
+        path:"/allStudent",
+        element:<AllStudent/>
       },
     ],
   },

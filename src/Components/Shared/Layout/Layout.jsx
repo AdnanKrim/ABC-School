@@ -9,7 +9,9 @@ const Layout = () => {
     const noHeaderFooter = location.pathname.includes('login') ||
         location.pathname.includes('signup') ||
         location.pathname.includes('studentDetails') ||
-        location.pathname.includes('defaultPanel');
+        location.pathname.includes('defaultPanel') || 
+        location.pathname.includes('pendingStudent') ||
+        location.pathname.includes('allStudent') 
 
     return (
         <div>
