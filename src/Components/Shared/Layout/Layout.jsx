@@ -6,11 +6,11 @@ import Footer from "../Footer/Footer";
 const Layout = () => {
 
     const location = useLocation();
-    const noHeaderFooter = location.pathname.includes('login') ||
+    const noHeaderFooter = location.pathname.includes('login') || 
         location.pathname.includes('signup') ||
-        location.pathname.includes('studentDetails') ||
-        location.pathname.includes('defaultPanel') || 
-        location.pathname.includes('pendingStudent') ||
+        location.pathname.includes('studentDetails') || 
+        location.pathname.includes('dp') || 
+        location.pathname.includes('pendingStudent') || 
         location.pathname.includes('allStudent') 
 
     return (

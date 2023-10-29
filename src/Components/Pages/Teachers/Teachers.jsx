@@ -1,7 +1,19 @@
+import { useEffect } from 'react';
 import unknownPhoto from '../../../../public/images/Unknown.png'
 import backgroudphoto from '../../../../public/images/tree.jpg'
+import { useState } from 'react';
 
 const Teachers = () => {
+
+const [teachers, setTeachers] = useState([]);
+
+useEffect(()=> {
+ fetch('https://nmx0zurxps.ap.loclx.io/api/teacher-listApi')
+ .then(res => res.json())
+ .then((data) => setTeachers(data))
+},[])
+
+console.log(teachers);
 
     return (
 <div>
@@ -19,7 +31,7 @@ const Teachers = () => {
                         style={{ fontFamily: 'Mooli, sans-serif' }}
                         className="text-3xl text-white font-semibold "
                     >
-                       Our Teachers
+                       Our Teachers : {teachers.length}
                     </h1>
                     <img className='w-[350px] h-[50px]' src="../../../../public/icons/hrLine.png" alt="" />
                 </div>

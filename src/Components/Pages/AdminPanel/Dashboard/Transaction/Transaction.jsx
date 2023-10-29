@@ -46,7 +46,7 @@ const options= {
 const Transaction = () => {
 
   return (
-    <div className="border-t-2 border-yellow-500 shadow-lg shadow-yellow-500 rounded-xl bg-black  px-5 pt-7.5 pb-5 sm: w-[300px] md:w-full lg:w-[450px] lg:h-[500px] flex items-center">
+<div className="border-t-2 border-yellow-500 shadow-lg shadow-yellow-500 rounded-xl bg-black  px-5 pt-7.5 pb-5 sm: w-[300px] md:w-full lg:w-[400px] lg:h-[550px] flex items-center">
       <div className='bg-black'>
       <div className="mb-3 justify-between gap-4 sm:flex lg:flex md:flex">
         <div>
@@ -55,7 +55,7 @@ const Transaction = () => {
           </h5>
         </div>
         <div>
-          <div className=" z-20 inline-block">
+          <div className=" z-20 inline-block me-6">
             <select
               name=""
               id=""

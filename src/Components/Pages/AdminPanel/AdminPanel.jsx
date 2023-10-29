@@ -1,13 +1,13 @@
 import DashBoardBody from "./Dashboard/Dashbody/DashBoardBody";
-import SearchPanel from "./Dashboard/SearchPanel/SearchPanel";
+import Drawer from "../AdminPanel/Dashboard/SearchPanel/Drawer";
 
 const AdminPanel = () => {
   return (
-    <div className="text-white ">
-      <div className="fixed z-10 w-full"><SearchPanel /></div>
-      <div className="flex justify-center">
-        <DashBoardBody />
-      </div>
+    <div className="flex justify-between gap-1">
+        {/* drawer section  */}
+        <Drawer />
+      {/* adminbody  */}
+            <DashBoardBody />
     </div>
   );
 };

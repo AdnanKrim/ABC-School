@@ -70,7 +70,7 @@ const router = createBrowserRouter([
       },
 // admin panel route ------------------------
       {
-        path:"/defaultPanel",
+        path:"/dp",
         element:<AdminPanel/>
       },
       {

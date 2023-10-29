@@ -1,21 +1,18 @@
 import { IoSearchCircleSharp } from "react-icons/io5";
 import { BiSolidMessageRounded } from "react-icons/bi";
-import Drawer from "./Drawer";
 import { NotificationsMenu } from "./NotificationsMenu";
 import { ProfileMenu } from "./ProfileMenu";
 
 const SearchPanel = () => {
   return (
-    <div className="bg-blue-800 p-2 flex justify-between items-center">
-      {/* drawer section  */}
-      <Drawer />
+    <div className="flex justify-between items-center fixed z-10 bg-blue-600  lg:px-16 py-2 lg:-ms-10 sm: px-28 sm: ms-10">
 
       {/* search section  */}
       <div className=" sm: hidden lg:flex md:flex">
         <input type="text" placeholder="Search Setting" className="input input-bordered input-success lg:w-[700px] md:w-[500px]" />
         <button
           title="Wishlist"
-          className=" hover:text-white text-blue-500 font-bold px-3 py-1
+          className=" text-white hover:text-blue-900 font-bold px-3 py-1
       rounded-md"> <IoSearchCircleSharp className="w-[30px] h-[30px]" />
         </button>
       </div>
@@ -28,7 +25,7 @@ const SearchPanel = () => {
           {/* message icon  */}
           <button
             title="Wishlist"
-            className=" hover:text-white text-blue-500 font-bold px-3 py-1
+            className=" text-white hover:text-blue-900 font-bold px-3 py-1
       rounded-md"> <BiSolidMessageRounded className="w-[25px] h-[25px]" />
           </button>
 
