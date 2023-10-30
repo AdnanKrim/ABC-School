@@ -1,7 +1,24 @@
 import unknownPhoto from "../../../../public/images/bean.png"
 import hr from "../../../../public/icons/hrLine.png"
+import axios from "axios";
+import { useState } from "react";
 
 const StudentDetails = () => {
+const [studentData, setStudentData ]=useState([])
+
+    const user = JSON.parse(localStorage.getItem('user'));
+    const headers = {
+         accept: 'application/json',
+         Authorization: 'bearer ' + user.token
+     }
+ 
+    //set token in axios header
+    axios.get(``, {
+        headers: headers
+    })
+    .then((res) => res.json())
+     .then((data) => setStudentData(data)) 
+
     return (
         <div>
             <div className="flex items-center justify-center">
@@ -9,7 +26,7 @@ const StudentDetails = () => {
 {/* StudentDetails tittle  */}
                     <div className="flex justify-center items-center my-3">
                         <div>
-                            <p className="flex justify-center items-center text-2xl font-bold uppercase">Student Details</p>
+                            <p className="flex justify-center items-center text-2xl font-bold uppercase">Student Details :{studentData.length}</p>
                             <img className='w-[350px] h-[50px] ' src={hr} alt="" />
                         </div>
                     </div>

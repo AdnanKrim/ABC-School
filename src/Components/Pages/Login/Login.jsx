@@ -4,10 +4,11 @@ import loginbanner from '../../../../public/images/educational_board.png';
 import marketien from '../../../../public/icons/Main Logo-01.png'
 
 function Login() {
+  
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleUsernameChange = (e) => {
+  const handleEmailChange = (e) => {
     setUsername(e.target.value);
   };
 
@@ -67,9 +68,9 @@ function Login() {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="username"
               type="text"
-              placeholder="Your Gmail"
+              placeholder="Your Email"
               value={username}
-              onChange={handleUsernameChange}
+              onChange={handleEmailChange}
             />
           </div>
           <div className="mb-6">
