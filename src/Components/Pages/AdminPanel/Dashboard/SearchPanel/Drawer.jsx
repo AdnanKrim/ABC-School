@@ -7,13 +7,14 @@ import { MdArrowDropDown } from "react-icons/md";
 const Drawer = () => {
     return (
         <div>
-        <div className="drawer lg:drawer-open fixed">
+        <div className="z-10 drawer lg:drawer-open fixed">
           <input id="my-drawer" type="checkbox" className="drawer-toggle " />
           <div className="drawer-content flex flex-col items-center justify-center">
             {/* Page content here */}
       <label htmlFor="my-drawer" 
         className="border border-blue-600 hover:bg-blue-500
-         hover:text-black w[20px] h-[20px] p-[31px] flex items-center lg:hidden bg-blue-600 -ms-80 ">
+         hover:text-black w[20px] h-[20px] p-[31px] flex items-center 
+         lg:hidden md:mt-0 md:me-[420px] bg-blue-600 sm: -ms-80 ">
                 <BiMenuAltLeft size={25} />
               </label>
           </div>
