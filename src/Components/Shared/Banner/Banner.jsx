@@ -1,8 +1,5 @@
 import TrialSilder from "./TrialSilder";
 
-
-
-
 const Banner = () => {
     return (
     <div>

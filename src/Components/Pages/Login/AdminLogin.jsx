@@ -45,7 +45,7 @@ function AdminLogin() {
                     timer: 1500
                 });
                 localStorage.setItem('user', JSON.stringify(res.data))
-                navigate('/studentDetails');
+                navigate('/dp');
             }
             else if (res.data.status === "403") {
                 Swal.fire({

@@ -1,42 +1,34 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import navimg1 from '../../../../public/images/educational_board.png'
 import navimg2 from '../../../../public/images/bangladesh_government.png'
 import { useState } from 'react';
 import { Button } from '@material-tailwind/react';
+import { useEffect } from 'react';
 
+// default system 
 
 const Navbar = () => {
-
+    const location = useLocation();
     const [activeDropdown, setActiveDropdown] = useState(null)
 
+    useEffect(() => {
+        setActiveDropdown(null);
+      }, [location]);   
     // navlist section ------------------------------------
     const navlist =
         <>
-            <li><a>
-                <Link to="/">Home</Link>
-            </a></li>
+            <Link to="/"><li><a>Home</a></li></Link>
             <li tabIndex={0}>
                 <details
                     open={activeDropdown === 'academic'}
                     onClick={() => setActiveDropdown('academic')}>
                     <summary>Academic</summary>
-                    <ul className="p-2 bg-blue-500">
-                        <li className='mx-16'><a></a></li>
-                        <li className='bg-blue-200 rounded-xl mb-1'>
-                            <Link to="/ourcampus">Our Campus</Link>
-                        </li>
-                        <li className='bg-blue-200 rounded-xl mb-1'>
-                            <Link to="/">Academic Rules</Link>
-                        </li>
-                        <li className='bg-blue-200 rounded-xl mb-1'>
-                            <Link to="/">Academic Calender</Link>
-                        </li>
-                        <li className='bg-blue-200 rounded-xl mb-1'>
-                            <Link to="/">Routine</Link>
-                        </li>
-                        <li className='bg-blue-200 rounded-xl mb-1'>
-                            <Link to="/syllabus">Syllabus</Link>
-                        </li>
+         <ul className="p-2 bg-blue-500">
+         <Link to="/ourcampus"><li className='bg-blue-200 rounded-xl mb-1 px-3 py-2'>Our Campus</li></Link>
+            <Link to="/"><li className='bg-blue-200 rounded-xl mb-1 px-3 py-2'>Academic Rules</li></Link>
+            <Link to="/"><li className='bg-blue-200 rounded-xl mb-1 px-3 py-2'>Academic Calender</li></Link>
+            <Link to="/"><li className='bg-blue-200 rounded-xl mb-1 px-3 py-2'>Routine</li></Link>
+            <Link to="/syllabus"><li className='bg-blue-200 rounded-xl mb-1 px-3 py-2'>Syllabus</li></Link>
                     </ul>
                 </details>
             </li>
@@ -45,14 +37,9 @@ const Navbar = () => {
             open={activeDropdown === 'admission'} 
             onClick={() => setActiveDropdown('admission')}>
                     <summary>Admission</summary>
-                    <ul className="p-2 bg-blue-500">
-                        <li className='mx-16'><a></a></li>
-                        <li className='bg-blue-200 rounded-xl mb-1'>
-                            <Link to="/">Apply Online</Link>
-                        </li>
-                        <li className='bg-blue-200 rounded-xl mb-1'>
-                            <Link to="/">Apply Method</Link>
-                        </li>
+        <ul className="p-2 bg-blue-500">
+        <Link to="/"><li className='bg-blue-200 rounded-xl mb-1 px-3 py-2'>Apply Online</li></Link>
+        <Link to="/"><li className='bg-blue-200 rounded-xl mb-1 px-3 py-2'>Apply Method</li></Link>
                     </ul>
                 </details>
             </li>
@@ -60,21 +47,12 @@ const Navbar = () => {
             <details 
             open={activeDropdown === 'about'} 
             onClick={() => setActiveDropdown('about')}>
-                    <summary>About</summary>
-                    <ul className="p-2 bg-blue-500">
-                        <li className='mx-16'><a></a></li>
-                        <li className='bg-blue-200 rounded-xl mb-1'>
-                            <Link to="/">Our History</Link>
-                        </li>
-                        <li className='bg-blue-200 rounded-xl mb-1'>
-                            <Link to="/teachers">
-                                Teachers
-                            </Link>
-                        </li>
-                        <li className='bg-blue-200 rounded-xl mb-3'>
-                            <Link to="/employees">Employees</Link>
-                        </li>
-                    </ul>
+         <summary>About</summary>
+           <ul className="p-2 bg-blue-500">
+                 <Link to="/"><li className='bg-blue-200 rounded-xl mb-1 px-3 py-2'>Our History</li></Link>
+                 <Link to="/teachers"><li className='bg-blue-200 rounded-xl mb-1 px-3 py-2'>Teachers</li></Link>
+                  <Link to="/employees"><li className='bg-blue-200 rounded-xl mb-3 px-3 py-2'>Employees</li></Link>
+           </ul>
                 </details>
             </li>
             <li>
