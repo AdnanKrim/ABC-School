@@ -36,8 +36,8 @@ const data = { email, password }
 const handleSubmit = (e) => {
   e.preventDefault();
   console.log('Email:', email, 'Password:', password);
-  axios.post(``, data).then(res => {
-      if (res.data.status === "201") {
+  axios.post(`http://oottnxcpjz.ap.loclx.io/api/login`, data).then(res => {
+      if (res.data.status === "201" ) {
           Swal.fire({
               position: 'top-end',
               icon: 'success',
@@ -46,7 +46,7 @@ const handleSubmit = (e) => {
               timer: 1500
           });
           localStorage.setItem('user', JSON.stringify(res.data))
-          navigate('studentDetails');
+          navigate('/studentDetails');
       }
       else if (res.data.status === "403") {
           Swal.fire({
@@ -55,6 +55,7 @@ const handleSubmit = (e) => {
               text: res.data.status,
             });
       }
+      
       else {
           Swal.fire({
               icon: 'error',
