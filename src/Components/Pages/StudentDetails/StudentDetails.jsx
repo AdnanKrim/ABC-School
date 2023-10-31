@@ -1,26 +1,34 @@
 
 import hr from "../../../../public/icons/hrLine.png"
 import axios from "axios";
+import { useEffect } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const StudentDetails = () => {
 
     const [studentData, setStudentData] =useState([])
 
-    const user = JSON.parse(localStorage.getItem('user'));
-    const headers = {
-         accept: 'application/json',
-         Authorization: 'Bearer ' + user.token
-     }
-     
-    //set token in axios header
-    axios.get(`http://oottnxcpjz.ap.loclx.io/api/student-detail`, {
-        headers: headers
-    })
-    .then((res) => {setStudentData(res.data);})
-    .catch((error) => {setStudentData(error);});
-    
-    
+    const navigate = useNavigate();
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            navigate('/login');
+        } else {
+            const user = JSON.parse(localStorage.getItem('user'));
+            const headers = {
+                accept: 'application/json',
+                Authorization: 'Bearer ' + user.token
+            };
+
+            axios.get(`http://oottnxcpjz.ap.loclx.io/api/student-detail`, {
+                headers: headers
+            })
+            .then((res) => { setStudentData(res.data); })
+            .catch((error) => { setStudentData(error); });
+        }
+    }, [navigate]);  
+ 
     return (
         <div>
             <div className="flex items-center justify-center">

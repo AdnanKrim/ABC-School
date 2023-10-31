@@ -38,7 +38,7 @@ function AdminLogin() {
         axios.post(``, data).then(res => {
             if (res.data.status === "201") {
                 Swal.fire({
-                    position: 'top-end',
+                    position: 'center',
                     icon: 'success',
                     title: 'Successfully Login',
                     showConfirmButton: false,

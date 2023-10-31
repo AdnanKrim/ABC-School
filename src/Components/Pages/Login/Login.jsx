@@ -36,23 +36,32 @@ const data = { email, password }
 const handleSubmit = (e) => {
   e.preventDefault();
   console.log('Email:', email, 'Password:', password);
-  axios.post(`http://oottnxcpjz.ap.loclx.io/api/login`, data).then(res => {
+  axios.post(`http://oottnxcpjz.ap.loclx.io/api/login`, data)
+  .then(res => {
       if (res.data.status === "201" ) {
           Swal.fire({
-              position: 'top-end',
+              position: 'center',
               icon: 'success',
               title: 'Successfully Login',
               showConfirmButton: false,
               timer: 1500
           });
-          localStorage.setItem('user', JSON.stringify(res.data))
-          navigate('/studentDetails');
+          if(res.data?.user?.role === "2"){
+            localStorage.setItem('user', JSON.stringify(res.data))
+            navigate('/studentDetails');
+          }else{
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: "You are not eligible for this page",
+            });
+          }
       }
       else if (res.data.status === "403") {
           Swal.fire({
               icon: 'error',
               title: 'Oops...',
-              text: res.data.status,
+              text: "Invalid Password",
             });
       }
       
@@ -61,7 +70,7 @@ const handleSubmit = (e) => {
               icon: 'error',
               title: 'Oops...',
               text: 'Something went wrong!',
-              footer: res.data.status,
+              footer: "Access Denied",
           });
       }
   })
