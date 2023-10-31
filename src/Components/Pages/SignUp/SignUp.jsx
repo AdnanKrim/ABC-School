@@ -200,7 +200,7 @@ const SignUP = () => {
 <div>
             <label htmlFor="file">Picture: </label> <br />
             <input
-              className="file-input file-input-bordered file-input-warning w-full max-w-lg"
+              className="file-input file-input-bordered file-input-primary w-full max-w-lg"
               type="file"
               name="file"
               id="file"
@@ -210,7 +210,7 @@ const SignUP = () => {
  </div>
 
           <button
-            className="bg-yellow-300 hover:bg-yellow-200 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full mt-3"
+            className="bg-blue-300 hover:bg-blue-600 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full mt-3"
             type="submit">Submit</button>
 
           {/* extra paragraph -------------  */}
@@ -218,13 +218,13 @@ const SignUP = () => {
           <p className='mt-3 text-sm'>already have an account? ,please
             <div className='flex items-center'>
               register here : <button
-                className="bg-yellow-300 hover:bg-yellow-200 font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-blue-300 hover:bg-blue-600 font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline"
               ><a href="/login">Login</a></button> <span className='ms-2 me-2'>or</span>
               <button
-                className="bg-yellow-300 hover:bg-yellow-200 font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline"><a href="/">return home</a></button>
+                className="bg-blue-300 hover:bg-blue-600 font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline"><a href="/">return home</a></button>
             </div>
           </p>
-          <hr  className='my-5 border border-yellow-300'/>
+          <hr  className='my-5 border border-blue-300'/>
       <h1 className='flex justify-center items-center'>copyright © <img className='w-[120px] ms-2' src={marketien} alt="" /></h1>
        </form>
       </div>

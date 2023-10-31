@@ -22,6 +22,9 @@ import AdminPanel from './Components/Pages/AdminPanel/AdminPanel';
 import PendingStudent from './Components/Pages/AdminPanel/Navigation/PendingStudent';
 import AllStudent from './Components/Pages/AdminPanel/Navigation/AllStudent';
 import AdminLogin from './Components/Pages/Login/AdminLogin';
+import Notice from './Components/Pages/Notice/Notice';
+import EnterPhone from './Components/Pages/Payment/EnterPhone';
+import EnterOTP from './Components/Pages/Payment/EnterOTP';
 
 const router = createBrowserRouter([
   {
@@ -58,8 +61,20 @@ const router = createBrowserRouter([
         element:<FullMessages/>,
       },
       {
-        path:"/payment",
+        path:"/notice",
+        element:<Notice/>,
+      },
+      {
+        path:"/Payment",
         element:<Payment/>,
+      },
+      {
+        path:"/enterPhone",
+        element:<EnterPhone/>,
+      },
+      {
+        path:"/enterotp",
+        element:<EnterOTP/>
       },
       {
         path:"/syllabus",

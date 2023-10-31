@@ -56,10 +56,10 @@ const Navbar = () => {
                 </details>
             </li>
             <li>
-                <Link to="/">Notice</Link>
+                <Link to="/notice">Notice</Link>
             </li>
             <li>
-                <Link to="/payment">Payment</Link>
+                <Link to="/enterPhone">Payment</Link>
             </li>
         </>
     // navlist section ------------------------------------

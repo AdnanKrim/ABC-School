@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const StudentDetails = () => {
 
@@ -14,6 +15,13 @@ const StudentDetails = () => {
         const token = localStorage.getItem('token');
         if (!token) {
             navigate('/login');
+            Swal.fire({
+                position: 'center',
+                icon: 'warning',
+                title: 'You have to Login first',
+                showConfirmButton: false,
+                timer: 1500
+            });
         } else {
             const user = JSON.parse(localStorage.getItem('user'));
             const headers = {

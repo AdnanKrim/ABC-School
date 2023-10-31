@@ -40,7 +40,7 @@ function AdminLogin() {
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Successfully Login',
+                    title: 'Successfully Logged IN',
                     showConfirmButton: false,
                     timer: 1500
                 });

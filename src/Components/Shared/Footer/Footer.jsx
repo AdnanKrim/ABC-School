@@ -40,11 +40,11 @@ const Footer = () => {
                    <div className="flex justify-center">
                     <div>
 
-                   <h3 className="text-xl text-center font-semibold">Facebook</h3>
+                   <h3 className="text-xl text-center font-semibold">Other Links</h3>
                        <hr className="mb-3 border-green-500"/>
                        <div className="photo">
                            <div>
-                               <img className='w-[250px] h-[50px]' src="../../../../public/icons/Main Logo-01.png" alt=""/>
+                           <a href="https://marketien.online/" className='hover:underline' target='blank'><img className='w-[250px] h-[50px]' src="../../../../public/icons/Main Logo-01.png" alt=""/></a>
                            </div>
                        </div>
                     </div>

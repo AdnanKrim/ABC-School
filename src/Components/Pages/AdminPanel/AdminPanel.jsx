@@ -3,6 +3,7 @@ import Drawer from "../AdminPanel/Dashboard/SearchPanel/Drawer";
 import { useNavigate } from "react-router-dom";
 import { useEffect,useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const AdminPanel = () => {
 
@@ -14,6 +15,13 @@ const AdminPanel = () => {
         const token = localStorage.getItem('token');
         if (!token) {
             navigate('/adminlogin');
+            Swal.fire({
+                position: 'center',
+                icon: 'warning',
+                title: 'You have to Login first',
+                showConfirmButton: false,
+                timer: 1500
+            });
         } else {
             const user = JSON.parse(localStorage.getItem('user'));
             const headers = {
