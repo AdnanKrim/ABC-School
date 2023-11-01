@@ -40,14 +40,22 @@ const StudentDetails = () => {
 
     const logoutSubmit = (e) => {
         e.preventDefault();
-        axios.post(`http://wjyc3bpfiy.ap.loclx.io/api/student-logout`).then(res => {
+        const user = JSON.parse(localStorage.getItem('user'));
+            const headers = {
+                accept: 'application/json',
+                Authorization: 'Bearer ' + user.token
+            };
+        axios.post(`http://wjyc3bpfiy.ap.loclx.io/api/student-logout`,null, {
+            headers: headers
+        })
+        .then(res => {
             if (res.data.status === "405") {
                 localStorage.removeItem('token', res.data.token);
-                localStorage.removeItem('user', JSON.stringify(res.data));
+                localStorage.removeItem('user', res.data.user);
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Logout Successfully',
+                    title: res.data.message,
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -89,10 +97,10 @@ const StudentDetails = () => {
                                 <h1><span className="font-bold text-xl">Registration:</span>{studentData?.registration}</h1>
                                 <div className="flex gap-3 mt-5">
                                     <Link to="/enterPhone"><button className="font-semibold text-white btn bg-green-500 hover:bg-green-300 hover:text-gray-600">Payment</button></Link>
-                                    <button
-                                        onClick={logoutSubmit}
-                                        className="font-semibold text-white btn bg-red-500  hover:bg-red-300 hover:text-gray-600">
-                                        Logout</button>
+  <button
+     onClick={logoutSubmit}
+ className="font-semibold text-white btn bg-red-500  hover:bg-red-300 hover:text-gray-600">
+              Logout</button>
                                 </div>
                             </div>
                         </div>
