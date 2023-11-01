@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const EnterPhone = () => {
 
@@ -23,11 +24,11 @@ const EnterPhone = () => {
             type="number"
             placeholder="Enter Phone Number"
           />
-<button 
+<Link to="/enterotp"><button 
 onClick={handleSubmit}
 className="w-full bg-blue-900 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded">
             Generate OTP
-</button>
+</button></Link>
         </div>
       </div>
     );

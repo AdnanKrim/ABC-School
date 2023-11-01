@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const EnterOTP = () => {
 
@@ -23,11 +24,11 @@ const EnterOTP = () => {
             type="number"
             placeholder="Enter Phone Number"
           />
-<button 
+<Link to="/Payment"><button 
 onClick={handleSubmit}
 className="w-full bg-blue-900 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded">
             Submit
-</button>
+</button></Link>
         </div>
       </div>
     );

@@ -1,73 +1,123 @@
+
+import Multiselect from 'multiselect-react-dropdown';
 import { useState } from 'react';
+import { useForm, } from 'react-hook-form';
+import bkashbuttonlogo from '../../../../public/icons/bkash_payment_logo.png'
 
 const Payment = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    fatherName: '',
-    class: '',
-    registrationNumber: '',
-    selectedMonths: [],
-    amount: ''
-  });
+  const [selectedMonths, setSelectedMonths] = useState([]);
+  const { handleSubmit, register } = useForm();
+  const [options, setOptions] = useState([
+    'January', 'February', 'March',
+    'April', 'May', 'June',
+    'July', 'August', 'September',
+    'October', 'Novermber', 'December'])
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleMonthChange = (e) => {
-    const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
-    setFormData({ ...formData, selectedMonths: selectedOptions });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData); // You can replace this with your desired form submission logic
+  const onSubmit = (data) => {
+    console.log(data);
+    console.log(selectedMonths);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name:
-        <input type="text" name="name" value={formData.name} onChange={handleChange} />
-      </label>
-      <br />
-      <label>
-        Father's Name:
-        <input type="text" name="fatherName" value={formData.fatherName} onChange={handleChange} />
-      </label>
-      <br />
-      <label>
-        Class:
-        <input type="text" name="class" value={formData.class} onChange={handleChange} />
-      </label>
-      <br />
-      <label>
-        Registration Number:
-        <input type="text" name="registrationNumber" value={formData.registrationNumber} onChange={handleChange} />
-      </label>
-      <br />
-      <label>
-        Select Month (Multiple Selection):
-        <select name="selectedMonths" multiple value={formData.selectedMonths} onChange={handleMonthChange}>
-          <option value="January">January</option>
-          <option value="February">February</option>
-          <option value="March">March</option>
-          {/* Add more options for other months */}
-        </select>
-      </label>
-      <br />
-      <label>
-        Amount:
-        <input type="text" name="amount" value={formData.amount} onChange={handleChange} />
-      </label>
-      <br />
-      <button type="submit">Submit</button>
-    </form>
+    <div className='mt-10'>
+      <form className="mx-auto max-w-md border p-5 rounded-lg bg-gray-200" onSubmit={handleSubmit(onSubmit)}>
+      <h1>Payment Form</h1>
+      <hr />
+
+        {/* name section  */}
+        <div className="mb-4">
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            className="form-input mt-1 block w-full"
+            placeholder='Adnan Karim'
+            readOnly
+            {...register('name')}
+          />
+        </div>
+        {/* father name section  */}
+        <div className="mb-4">
+          <label htmlFor="fatherName" className="block text-sm font-medium text-gray-700">Father Name</label>
+          <input
+            type="text"
+            id="fatherName"
+            name="fatherName"
+            className="form-input mt-1 block w-full"
+            placeholder='Fazlul Karim'
+            readOnly
+            {...register('fatherName')}
+          />
+        </div>
+
+        <div className='grid sm: grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5'>
+          {/* class section  */}
+          <div className="mb-4">
+            <label htmlFor="class" className="block text-sm font-medium text-gray-700">Class</label>
+            <input
+              type="text"
+              id="class"
+              name="class"
+              className="form-input mt-1 block w-full"
+              placeholder='Ten'
+              readOnly
+              {...register('class')}
+            />
+          </div>
+          {/* registration section  */}
+          <div className="mb-4">
+            <label htmlFor="registrationNumber" className="block text-sm font-medium text-gray-700">Registration Number</label>
+            <input
+              type="text"
+              id="registrationNumber"
+              name="registrationNumber"
+              className="form-input mt-1 block w-full"
+              placeholder='121212121'
+              readOnly
+              {...register('registrationNumber')}
+            />
+          </div>
+        </div>
+
+        {/* select month section  */}
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">Select Month</label>
+          <Multiselect
+            isObject={false}
+            onRemove={(event) => {
+              setSelectedMonths(event);
+            }}
+            onSelect={(event) => {
+              setSelectedMonths(event);
+            }}
+            options={options}
+            showCheckbox
+          />
+        </div>
+
+        {/* amount section  */}
+        <div className="mb-4">
+          <label htmlFor="amount" className="block text-sm font-medium text-gray-700">Amount</label>
+          <input
+            type="number"
+            id="amount"
+            name="amount"
+            className="form-input mt-1 block w-full"
+            placeholder='Monthly Amount'
+            {...register('amount')}
+          />
+        </div>
+
+        {/* <button type="submit" className="bg-blue-500 text-white font-semibold px-4 py-2 rounded hover:bg-blue-600">Submit</button> */}
+        <div className='flex justify-center mt-10'>
+          <button type="submit" className="bg-transparent border-none p-0">
+            <img className=' w-[250px] h-auto' src={bkashbuttonlogo} alt="" />
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
-
-
-// give me a form for my react compo which has this input filelds given below--- name, father name, class, registration number, select month, amount and a submit button. the select month fileld should be a dropdown selector. there I can select multiple month
 
 export default Payment;

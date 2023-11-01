@@ -3,7 +3,7 @@ import hr from "../../../../public/icons/hrLine.png"
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const StudentDetails = () => {
@@ -69,8 +69,8 @@ const StudentDetails = () => {
                                 <h1><span className="font-bold text-xl">Section :</span>{studentData?.section}</h1>
                                 <h1><span className="font-bold text-xl">Registration:</span>{studentData?.registration}</h1>
                                 <div className="flex gap-3 mt-5">
-                                    <button className="font-semibold text-white btn bg-green-500 hover:bg-green-300 hover:text-gray-600">Payment</button>
-                                    <button className="font-semibold text-white btn bg-red-500  hover:bg-red-300 hover:text-gray-600">Logout</button>
+                   <Link to="/enterPhone"><button className="font-semibold text-white btn bg-green-500 hover:bg-green-300 hover:text-gray-600">Payment</button></Link>
+                    <button className="font-semibold text-white btn bg-red-500  hover:bg-red-300 hover:text-gray-600">Logout</button>
                                 </div>
                             </div>
                         </div>
