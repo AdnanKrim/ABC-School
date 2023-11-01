@@ -6,23 +6,35 @@ import bkashbuttonlogo from '../../../../public/icons/bkash_payment_logo.png'
 
 const Payment = () => {
   const [selectedMonths, setSelectedMonths] = useState([]);
-  const { handleSubmit, register } = useForm();
-  const [options, setOptions] = useState([
+  const { handleSubmit, register ,watch} = useForm();
+  const amount = watch('amount');
+
+  const options = [
     'January', 'February', 'March',
     'April', 'May', 'June',
     'July', 'August', 'September',
-    'October', 'Novermber', 'December'])
+    'October', 'November', 'December'
+  ];
 
   const onSubmit = (data) => {
     console.log(data);
     console.log(selectedMonths);
+    console.log(amount);
+  };
+  const calculateTotalAmount = () => {
+    const selectedMonthsCount = selectedMonths.length;
+    const enteredAmount = parseFloat(amount) || 0;
+    return selectedMonthsCount * enteredAmount;
   };
 
   return (
-    <div className='mt-10'>
-      <form className="mx-auto max-w-md border p-5 rounded-lg bg-gray-200" onSubmit={handleSubmit(onSubmit)}>
-      <h1>Payment Form</h1>
-      <hr />
+    <div className='mt-5'>
+      <form
+      onSubmit={handleSubmit(onSubmit)}
+       className="mx-auto max-w-md border p-5 rounded-lg bg-gray-200" >
+        
+      <h1 className='flex justify-center text-xl mb-3'>--- Payment Form ---</h1>
+      <hr className='mb-3 border border-black'/>
 
         {/* name section  */}
         <div className="mb-4">
@@ -80,6 +92,34 @@ const Payment = () => {
           </div>
         </div>
 
+<div className='grid sm: grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5'>
+        {/* amount section  */}
+        <div className="mb-4">
+          <label htmlFor="amount" className="block text-sm font-medium text-gray-700">Amount</label>
+          <input
+            type="text"
+            id="amount"
+            name="amount"
+            className="form-input mt-1 block w-full"
+            placeholder="Monthly Amount"
+            {...register('amount')}
+          />
+        </div>
+
+        {/* total amount section */}
+        <div className="mb-4">
+          <label htmlFor="totalAmount" className="block text-sm font-medium text-gray-700">Total Amount</label>
+          <input
+            type="text"
+            id="totalAmount"
+            name="totalAmount"
+            className="form-input mt-1 block w-full"
+            value={calculateTotalAmount()}
+            readOnly
+          />
+        </div>
+ </div>
+
         {/* select month section  */}
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">Select Month</label>
@@ -96,23 +136,10 @@ const Payment = () => {
           />
         </div>
 
-        {/* amount section  */}
-        <div className="mb-4">
-          <label htmlFor="amount" className="block text-sm font-medium text-gray-700">Amount</label>
-          <input
-            type="number"
-            id="amount"
-            name="amount"
-            className="form-input mt-1 block w-full"
-            placeholder='Monthly Amount'
-            {...register('amount')}
-          />
-        </div>
-
-        {/* <button type="submit" className="bg-blue-500 text-white font-semibold px-4 py-2 rounded hover:bg-blue-600">Submit</button> */}
-        <div className='flex justify-center mt-10'>
+{/* submit butotn section  */}
+<div className='flex justify-center mt-10'>
           <button type="submit" className="bg-transparent border-none p-0">
-            <img className=' w-[250px] h-auto' src={bkashbuttonlogo} alt="" />
+            <img className=' w-[250px] h-auto rounded-md hover:scale-105' src={bkashbuttonlogo} alt="" />
           </button>
         </div>
       </form>

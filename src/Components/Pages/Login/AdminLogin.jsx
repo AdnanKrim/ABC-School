@@ -44,8 +44,18 @@ function AdminLogin() {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                localStorage.setItem('user', JSON.stringify(res.data))
-                navigate('/dp');
+                if(res.data?.user?.role === "1"){
+                    localStorage.setItem('user', JSON.stringify(res.data))
+                    navigate('/dp');
+                  }else{
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: "You are not eligible for this page",
+                    });
+                  }
+                // localStorage.setItem('user', JSON.stringify(res.data))
+                // navigate('/dp');
             }
             else if (res.data.status === "403") {
                 Swal.fire({

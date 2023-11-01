@@ -36,7 +36,7 @@ const data = { email, password }
 const handleSubmit = (e) => {
   e.preventDefault();
   console.log('Email:', email, 'Password:', password);
-  axios.post(`http://oottnxcpjz.ap.loclx.io/api/login`, data)
+  axios.post(`http://wjyc3bpfiy.ap.loclx.io/api/login`, data)
   .then(res => {
       if (res.data.status === "201" ) {
           Swal.fire({
@@ -46,16 +46,19 @@ const handleSubmit = (e) => {
               showConfirmButton: false,
               timer: 1500
           });
-          if(res.data?.user?.role === "2"){
-            localStorage.setItem('user', JSON.stringify(res.data))
-            navigate('/studentDetails');
-          }else{
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: "You are not eligible for this page",
-            });
-          }
+          // if(res.data?.user?.role === "2"){
+          //   localStorage.setItem('user', JSON.stringify(res.data))
+          //   navigate('/studentDetails');
+          // }else{
+          //   Swal.fire({
+          //     icon: 'error',
+          //     title: 'Oops...',
+          //     text: "You are not eligible for this page",
+          //   });
+          // }
+localStorage.setItem('token', res.data.token);
+localStorage.setItem('user', JSON.stringify(res.data));
+          navigate('/studentDetails');
       }
       else if (res.data.status === "403") {
           Swal.fire({

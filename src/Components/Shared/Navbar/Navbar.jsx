@@ -59,7 +59,7 @@ const Navbar = () => {
                 <Link to="/notice">Notice</Link>
             </li>
             <li>
-                <Link to="/enterPhone">Payment</Link>
+                <Link to="/studentDetails">Payment</Link>
             </li>
         </>
     // navlist section ------------------------------------
