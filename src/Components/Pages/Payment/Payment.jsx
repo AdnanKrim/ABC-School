@@ -6,8 +6,10 @@ import bkashbuttonlogo from '../../../../public/icons/bkash_payment_logo.png'
 
 const Payment = () => {
   const [selectedMonths, setSelectedMonths] = useState([]);
-  const { handleSubmit, register ,watch} = useForm();
-  const amount = watch('amount');
+  const { handleSubmit, register } = useForm();
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [amount, setAmount] = useState(0);
+
 
   const options = [
     'January', 'February', 'March',
@@ -15,26 +17,40 @@ const Payment = () => {
     'July', 'August', 'September',
     'October', 'November', 'December'
   ];
+  const handleAmountChange = (event) => {
+    const newAmount = parseFloat(event.target.value) || 0;
+    setAmount(newAmount);
+    updateTotalAmount(newAmount, selectedMonths);
+  };
+
+  const updateTotalAmount = (newAmount, selectedMonths) => {
+    const selectedMonthCount = selectedMonths.length;
+    const calculatedTotalAmount = newAmount * selectedMonthCount;
+    setTotalAmount(calculatedTotalAmount);
+  };
+  // const onSubmit = (data) => {
+  //   console.log(data);
+  //   console.log(selectedMonths);
+  // };
+  const handleMonthChange = (event) => {
+    setSelectedMonths(event);
+    updateTotalAmount(amount, event);
+  };
 
   const onSubmit = (data) => {
     console.log(data);
     console.log(selectedMonths);
-    console.log(amount);
   };
-  const calculateTotalAmount = () => {
-    const selectedMonthsCount = selectedMonths.length;
-    const enteredAmount = parseFloat(amount) || 0;
-    return selectedMonthsCount * enteredAmount;
-  };
+
 
   return (
     <div className='mt-5'>
       <form
-      onSubmit={handleSubmit(onSubmit)}
-       className="mx-auto max-w-md border p-5 rounded-lg bg-gray-200" >
-        
-      <h1 className='flex justify-center text-xl mb-3'>--- Payment Form ---</h1>
-      <hr className='mb-3 border border-black'/>
+        onSubmit={handleSubmit(onSubmit)}
+        className="mx-auto max-w-md border p-5 rounded-lg bg-gray-200" >
+
+        <h1 className='flex justify-center text-xl mb-3'>--- Payment Form ---</h1>
+        <hr className='mb-3 border border-black' />
 
         {/* name section  */}
         <div className="mb-4">
@@ -92,52 +108,52 @@ const Payment = () => {
           </div>
         </div>
 
-<div className='grid sm: grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5'>
-        {/* amount section  */}
-        <div className="mb-4">
-          <label htmlFor="amount" className="block text-sm font-medium text-gray-700">Amount</label>
-          <input
+        <div className='grid sm: grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5'>
+          {/* amount section  */}
+          <div className="mb-4">
+            <label htmlFor="amount" className="block text-sm font-medium text-gray-700">Amount</label>
+            <input
             type="text"
             id="amount"
             name="amount"
             className="form-input mt-1 block w-full"
             placeholder="Monthly Amount"
-            {...register('amount')}
+            value={amount}
+            onChange={handleAmountChange}
           />
-        </div>
+          </div>
 
-        {/* total amount section */}
-        <div className="mb-4">
-          <label htmlFor="totalAmount" className="block text-sm font-medium text-gray-700">Total Amount</label>
-          <input
+          {/* total amount section */}
+          <div className="mb-4">
+            <label htmlFor="totalAmount"
+              className="block text-sm font-medium text-gray-700">Total Amount</label>
+             <input
             type="text"
             id="totalAmount"
             name="totalAmount"
             className="form-input mt-1 block w-full"
-            value={calculateTotalAmount()}
             readOnly
+            value={totalAmount}
           />
+
+          </div>
         </div>
- </div>
 
         {/* select month section  */}
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">Select Month</label>
           <Multiselect
             isObject={false}
-            onRemove={(event) => {
-              setSelectedMonths(event);
-            }}
-            onSelect={(event) => {
-              setSelectedMonths(event);
-            }}
+            selectedValues={selectedMonths}
+            onRemove={handleMonthChange}
+            onSelect={handleMonthChange}
             options={options}
             showCheckbox
           />
         </div>
 
-{/* submit butotn section  */}
-<div className='flex justify-center mt-10'>
+        {/* submit butotn section  */}
+        <div className='flex justify-center mt-10'>
           <button type="submit" className="bg-transparent border-none p-0">
             <img className=' w-[250px] h-auto rounded-md hover:scale-105' src={bkashbuttonlogo} alt="" />
           </button>
