@@ -3,6 +3,8 @@ import loginPhoto from '../../../../public/images/educational_board.png';
 import loginbanner from '../../../../public/images/educational_board.png';
 import marketien from '../../../../public/icons/Main Logo-01.png'
 import axios from 'axios';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const SignUP = () => {
   const [name, setName] = useState('');
@@ -13,6 +15,7 @@ const SignUP = () => {
   const [password, setPassword] = useState('');
   const [image, setImage] = useState('');
   const [phoneNo, setphoneNo] = useState('');
+  const navigate = useNavigate();
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -53,23 +56,23 @@ const SignUP = () => {
       image: image
     };
 
-    axios.post(`https://gnp3gab9yp.ap.loclx.io/api/student-reg`, data)
+    axios.post(`http://u9mzfwfzsv.loclx.io/api/student-reg`, data)
     .then(res => {
       console.log('Data:', res.data);
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: res.data.message,
+        showConfirmButton: false,
+        timer: 1500
+    });
+    navigate('/');
     })
     .catch(error => {
       console.error('An error occurred:', error);
     });
 
-    console.log(
-      'name = ', name,
-      ',fatherName = ', fatherName,
-      ',motherName = ', motherName,
-      ',birthdate = ', birthDate,
-    ',EmaiId = ' , email,
-    ',Password = ' , password,
-    ',Phone Number = ' , phoneNo,
-    ',photo = ' , image);
+    console.log(data);
     
     // setName('');
     // setFather('');

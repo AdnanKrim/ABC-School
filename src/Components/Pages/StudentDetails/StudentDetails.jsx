@@ -14,7 +14,6 @@ const StudentDetails = () => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (!token) {
-            navigate('/login');
             Swal.fire({
                 position: 'center',
                 icon: 'warning',
@@ -22,6 +21,7 @@ const StudentDetails = () => {
                 showConfirmButton: false,
                 timer: 1500
             });
+            navigate('/login');
         } else {
             const user = JSON.parse(localStorage.getItem('user'));
             const headers = {
