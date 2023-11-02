@@ -5,8 +5,8 @@ import { useForm, } from 'react-hook-form';
 import bkashbuttonlogo from '../../../../public/icons/bkash_payment_logo.png'
 
 const Payment = () => {
-  const [selectedMonths, setSelectedMonths] = useState([]);
   const { handleSubmit, register } = useForm();
+  const [selectedMonths, setSelectedMonths] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [amount, setAmount] = useState(0);
 

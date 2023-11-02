@@ -2,28 +2,29 @@ import { useState } from 'react';
 import loginPhoto from '../../../../public/images/educational_board.png';
 import loginbanner from '../../../../public/images/educational_board.png';
 import marketien from '../../../../public/icons/Main Logo-01.png'
+import axios from 'axios';
 
 const SignUP = () => {
   const [name, setName] = useState('');
-  const [father, setFather] = useState('');
-  const [mother, setMother] = useState('');
-  const [birthdate, setBirthdate] = useState('');
+  const [fatherName, setfatherName] = useState('');
+  const [motherName, setmotherName] = useState('');
+  const [birthDate, setBirthDate] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [file, setFile] = useState('');
-  const [phone, setPhone] = useState('');
+  const [image, setImage] = useState('');
+  const [phoneNo, setphoneNo] = useState('');
 
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
-  const handleFatherChange = (e) => {
-    setFather(e.target.value);
+  const handlefatherNameChange = (e) => {
+    setfatherName(e.target.value);
   };
-  const handleMotherChange = (e) => {
-    setMother(e.target.value);
+  const handlemotherNameChange = (e) => {
+    setmotherName(e.target.value);
   };
-  const handleBirthdateChange = (e) => {
-    setBirthdate(e.target.value);
+  const handleBirthDateChange = (e) => {
+    setBirthDate(e.target.value);
   };
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -31,26 +32,53 @@ const SignUP = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-  const handleFileChange = (e) => {
-    setFile(e.target.value);
+  const handleImageChange = (e) => {
+    setImage(e.target.value);
   };
-  const handlePhoneChange = (e) => {
-    setPhone(e.target.value);
+  const handlephoneNoChange = (e) => {
+    setphoneNo(e.target.value);
   };
-
 
   // handle button section ----------------
   const handleSubmit = (e) => {
-    console.log(name, father, mother, birthdate, email, password ,phone, file);
     e.preventDefault();
-    setName('');
-    setFather('');
-    setMother('');
-    setBirthdate('');
-    setEmail('');
-    setPassword('');
-    setFile('');
-    setPhone('');
+    const data = {
+      name: name,
+      fatherName: fatherName,
+      motherName: motherName,
+      birthDate: birthDate,
+      email: email,
+      password: password,
+      phoneNo: phoneNo,
+      image: image
+    };
+
+    axios.post(`https://gnp3gab9yp.ap.loclx.io/api/student-reg`, data)
+    .then(res => {
+      console.log('Data:', res.data);
+    })
+    .catch(error => {
+      console.error('An error occurred:', error);
+    });
+
+    console.log(
+      'name = ', name,
+      ',fatherName = ', fatherName,
+      ',motherName = ', motherName,
+      ',birthdate = ', birthDate,
+    ',EmaiId = ' , email,
+    ',Password = ' , password,
+    ',Phone Number = ' , phoneNo,
+    ',photo = ' , image);
+    
+    // setName('');
+    // setFather('');
+    // setMother('');
+    // setBirthdate('');
+    // setEmail('');
+    // setPassword('');
+    // setFile('');
+    // setPhone('');
   };
 
 
@@ -93,11 +121,12 @@ const SignUP = () => {
           onSubmit={handleSubmit}
           className="bg-gray-100 drop-shadow-2xl rounded-xl px-8 pt-6 pb-8 mb-4">
 
-<h1 className="font-semibold text-center mb-3">Please Register Here</h1>
- {/* name section   */}
+          <h1 className="font-semibold text-center mb-3">Please Register Here</h1>
+          {/* name section   */}
           <div>
             <label htmlFor="name">Name:</label>
             <input
+              required
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-3"
               placeholder='Your Name'
               type="text"
@@ -107,107 +136,111 @@ const SignUP = () => {
               onChange={handleNameChange}
             />
           </div>
-{/* motherName and fathername section  */}
-<div className='flex gap-2 mb-3'>
+          {/* motherName and fathername section  */}
+          <div className='flex gap-2 mb-3'>
 
-<div>
-               {/* eslint-disable-next-line react/no-unescaped-entities */}
-            <label htmlFor="father">Father's Name:</label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder='Your Father Name'
-              type="text"
-              name="fatherName"
-              id="fatherName"
-              value={father}
-              onChange={handleFatherChange}
-            />
+            <div>
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              <label htmlFor="fatherName">Father's Name:</label>
+              <input
+                required
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder='Your Father Name'
+                type="text"
+                name="fatherName"
+                id="fatherName"
+                value={fatherName}
+                onChange={handlefatherNameChange}
+              />
+            </div>
+            <div>
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              <label htmlFor="motherName">Mother's Name:</label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder='Your Mother Name'
+                type="text"
+                name="motherName"
+                id="motherName"
+                value={motherName}
+                onChange={handlemotherNameChange}
+              />
+            </div>
+
           </div>
+
+          {/* Phone and birthdate section  */}
+          <div className='flex gap-2 mb-3'>
+            <div>
+              <label htmlFor="phoneNo">Phone Number:</label>
+              <input
+                required
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder='Your Phone Number'
+                type="number"
+                name="phoneNo"
+                id="phoneNo"
+                value={phoneNo}
+                onChange={handlephoneNoChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="birthDate">Birthdate:</label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                type="date"
+                name="birthDate"
+                id="birthDate"
+                value={birthDate}
+                onChange={handleBirthDateChange}
+              />
+            </div>
+
+          </div>
+
+
+          {/* email and password section  */}
+          <div className='flex gap-2 mb-3'>
+            <div>
+              <label htmlFor="email">Email:</label>
+              <input
+                required
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder='Your Email'
+                type="email"
+                name="email"
+                id="email"
+                value={email}
+                onChange={handleEmailChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="password">Password:</label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder='Your Password'
+                type="password"
+                name="password"
+                id="password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+            </div>
+          </div>
+
+          {/* picture section  */}
           <div>
-{/* eslint-disable-next-line react/no-unescaped-entities */}
-            <label htmlFor="mother">Mother's Name:</label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder='Your Mother Name'
-              type="text"
-              name="motherName"
-              id="motherName"
-              value={mother}
-              onChange={handleMotherChange}
-            />
-          </div>
-
-</div>
-
-{/* Phone and birthdate section  */}
-<div className='flex gap-2 mb-3'>
-<div>
-            <label htmlFor="phone">Phone Number:</label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder='Your Phone Number'
-              type="number"
-              name="phone"
-              id="section"
-              value={phone}
-              onChange={handlePhoneChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="birthdate">Birthdate:</label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              type="date"
-              name="birthdate"
-              id="birthdate"
-              value={birthdate}
-              onChange={handleBirthdateChange}
-            />
-          </div>
-
-</div>
-
-
-{/* email and password section  */}
-<div className='flex gap-2 mb-3'>
-          <div>
-            <label htmlFor="email">Email:</label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder='Your Email'
-              type="email"
-              name="email"
-              id="email"
-              value={email}
-              onChange={handleEmailChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="password">Password:</label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder='Your Password'
-              type="password"
-              name="password"
-              id="password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-          </div>
-</div>
-
-{/* picture section  */}
-<div>
             <label htmlFor="file">Picture: </label> <br />
             <input
+              required
               className="file-input file-input-bordered file-input-primary w-full max-w-lg"
               type="file"
-              name="file"
+              name="image"
               id="file"
-              value={file}
-              onChange={handleFileChange}
+              value={image}
+              onChange={handleImageChange}
             />
- </div>
+          </div>
 
           <button
             className="bg-blue-300 hover:bg-blue-600 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full mt-3"
@@ -224,9 +257,9 @@ const SignUP = () => {
                 className="bg-blue-300 hover:bg-blue-600 font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline"><a href="/">return home</a></button>
             </div>
           </p>
-          <hr  className='my-5 border border-blue-300'/>
-      <h1 className='flex justify-center items-center'>copyright © <img className='w-[120px] ms-2' src={marketien} alt="" /></h1>
-       </form>
+          <hr className='my-5 border border-blue-300' />
+          <h1 className='flex justify-center items-center'>copyright © <img className='w-[120px] ms-2' src={marketien} alt="" /></h1>
+        </form>
       </div>
     </div>
   );

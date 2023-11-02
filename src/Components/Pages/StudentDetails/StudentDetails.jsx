@@ -81,20 +81,20 @@ const StudentDetails = () => {
                     <div className="flex">
                         <div className=" text-lg grid sm: grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-10  md:gap-10 mt-10">
                             <div className="leading-10">
-                                <h1><span className="font-bold text-xl">Name:</span>{studentData?.name}</h1>
+                                <h1><span className="font-bold text-xl">Name:</span>{studentData?.file}</h1>
                                 {/* eslint-disable-next-line react/no-unescaped-entities */}
-                                <h1><span className="font-bold text-xl">Father's Name:</span>{studentData?.fatherName}</h1>
+                                <h1><span className="font-bold text-xl">Father's Name:</span>{studentData?.user.fatherName}</h1>
                                 {/* eslint-disable-next-line react/no-unescaped-entities */}
-                                <h1><span className="font-bold text-xl">Mother's Name:</span>{studentData?.motherName}</h1>
-                                <h1><span className="font-bold text-xl">BirthDate:</span>{studentData?.birthDate}</h1>
-                                <h1><span className="font-bold text-xl">Email:</span>{studentData?.email}</h1>
-                                <h1><span className="font-bold text-xl">Adress:</span>{studentData?.address}</h1>
+                                <h1><span className="font-bold text-xl">Mother's Name:</span>{studentData?.user.motherName}</h1>
+                                <h1><span className="font-bold text-xl">BirthDate:</span>{studentData?.user.birthDate}</h1>
+                                <h1><span className="font-bold text-xl">Email:</span>{studentData?.user.email}</h1>
+                                <h1><span className="font-bold text-xl">Adress:</span>{studentData?.user.address}</h1>
                             </div>
                             <div className="leading-10">
-                                <h1><span className="font-bold text-xl">Class:</span>{studentData?.class}</h1>
-                                <h1><span className="font-bold text-xl">Class Roll:</span>{studentData?.rollNo}</h1>
-                                <h1><span className="font-bold text-xl">Section :</span>{studentData?.section}</h1>
-                                <h1><span className="font-bold text-xl">Registration:</span>{studentData?.registration}</h1>
+                                <h1><span className="font-bold text-xl">Class:</span>{studentData?.user.class}</h1>
+                                <h1><span className="font-bold text-xl">Class Roll:</span>{studentData?.user.rollNo}</h1>
+                                <h1><span className="font-bold text-xl">Section :</span>{studentData?.user.section}</h1>
+                                <h1><span className="font-bold text-xl">Registration:</span>{studentData?.user.registration}</h1>
                                 <div className="flex gap-3 mt-5">
                                     <Link to="/enterPhone"><button className="font-semibold text-white btn bg-green-500 hover:bg-green-300 hover:text-gray-600">Payment</button></Link>
   <button
