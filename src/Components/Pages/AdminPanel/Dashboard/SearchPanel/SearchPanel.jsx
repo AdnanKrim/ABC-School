@@ -5,7 +5,7 @@ import { ProfileMenu } from "./ProfileMenu";
 
 const SearchPanel = () => {
   return (
-    <div className="flex justify-between items-center fixed z-10 bg-blue-600  lg:px-16 py-2 lg:-ms-10 sm: px-28 sm: ms-10">
+    <div className="flex justify-between items-center fixed z-10 bg-blue-600 lg:px-16 py-2 lg:-ms-10 sm: px-28 sm: ms-10">
 
       {/* search section  */}
       <div className=" sm: hidden lg:flex md:flex">

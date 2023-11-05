@@ -1,22 +1,21 @@
-import ReactApexChart from 'react-apexcharts';
-
+import ReactApexChart from "react-apexcharts";
 
 const options = {
   chart: {
-    type: 'donut',
+    type: "donut",
   },
-  colors: ['#10B981', '#375E83', '#259AE6', '#FFA70B'],
-  labels: ['Remote', 'Hybrid', 'Onsite', 'Leave'],
+  colors: ["#10B981", "#375E83", "#259AE6", "#FFA70B"],
+  labels: ["Remote", "Hybrid", "Onsite", "Leave"],
   legend: {
     show: true,
-    position: 'bottom',
+    position: "bottom",
   },
 
   plotOptions: {
     pie: {
       donut: {
-        size: '65%',
-        background: 'transparent',
+        size: "65%",
+        background: "transparent",
       },
     },
   },
@@ -44,10 +43,9 @@ const options = {
 };
 
 const Transaction = () => {
-
   return (
     <div className="border-t-2 border-yellow-500 shadow-lg shadow-yellow-500 rounded-xl bg-black  px-5 pt-7.5 pb-5 sm: w-[300px] md:w-full lg:w-[400px] lg:h-[550px] flex items-center">
-      <div className='bg-black'>
+      <div className="bg-black">
         <div className="mb-3 justify-between gap-4 sm:flex lg:flex md:flex">
           <div>
             <h5 className="text-xl font-semibold  text-white">
@@ -89,7 +87,10 @@ const Transaction = () => {
         </div>
 
         <div className="mb-2 ">
-          <div id="chartThree" className=" mx-auto flex justify-center sm: w-full md:w-[600px] lg:w-full">
+          <div
+            id="chartThree"
+            className=" mx-auto flex justify-center sm: w-full md:w-[600px] lg:w-full"
+          >
             <ReactApexChart
               options={options}
               series={[65, 34, 12, 56]}
@@ -99,7 +100,6 @@ const Transaction = () => {
         </div>
 
         <div className="mx-8 flex lg:flex-wrap sm: flex-wrap md:flex-wrap items-center justify-center gap-y-3 mt-10">
-
           <div className="w-full px-8 sm:w-1/2">
             <div className="flex w-full items-center">
               <span className="mr-2 block h-3 w-3 rounded-full bg-primary"></span>
@@ -141,7 +141,6 @@ const Transaction = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };

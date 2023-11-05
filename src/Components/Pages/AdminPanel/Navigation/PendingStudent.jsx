@@ -1,8 +1,25 @@
 import SearchPanel from "../Dashboard/SearchPanel/SearchPanel";
 import tableimg from '../../../../../public/images/Unknown.png';
 import Drawer from "../Dashboard/SearchPanel/Drawer";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
 
 const PendingStudent = () => {
+
+  const [pendStudents, setPendStudents] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://example.com/api/allStudents")
+      .then((res) => {
+        setPendStudents(res.data);
+      })
+      .catch((error) => {
+        console.error("An error occurred:", error);
+      });
+  }, []);
+  console.log(pendStudents);
 
   return (
     <div className="flex justify-between ">
@@ -19,7 +36,7 @@ const PendingStudent = () => {
             <hr className="border border-black mb-8" />
 
             {/* table section  */}
-            <div className="overflow-x-auto lg:ms-0 md:ms-0 sm: ms-[450px]">
+            <div className="overflow-x-auto lg:ms-0 md:ms-0 ">
               {/* search and add field  */}
               <div className="flex justify-between items-center">
                 {/* search input  */}
@@ -50,91 +67,26 @@ const PendingStudent = () => {
                   </tr>
                 </thead>
                 <tbody>
+                {pendStudents.map((pendStudent, index) => {
                   {/* row-1  */}
-                  <tr>
-                    <td>1</td>
+                  <tr key={pendStudent.id}>
+                    <td>{index + 1}</td>
                     <td>
-                      <div className="mask mask-squircle w-12 h-12">
-                        <img src={tableimg} alt="" />
-                      </div></td>
-                    <td>Abu Jahel</td>
-                    <td>10110</td>
-                    <td>1965230</td>
-                    <td>10</td>
+                    <div className="mask mask-squircle w-12 h-12">
+                          <img src={pendStudent.img} alt="" />
+                        </div>
+                      </td>
+                      <td>{pendStudent.name}</td>
+                      <td>{pendStudent.roll}</td>
+                      <td>{pendStudent.registration}</td>
+                      <td>{pendStudent.class}</td>
                     <td className="flex gap-2">
                       <button className="btn-xs bg-green-500 rounded-lg font-semibold uppercase hover:bg-green-800 hover:text-white">Edit</button>
                       <button className="btn-xs bg-blue-500 rounded-lg font-semibold uppercase hover:bg-blue-800 hover:text-white">Approve</button>
                       <button className="btn-xs bg-red-500 rounded-lg font-semibold uppercase hover:bg-red-800 hover:text-white">Delete</button>
                     </td>
                   </tr>
-                  {/* row-2  */}
-                  <tr>
-                    <td>2</td>
-                    <td>
-                      <div className="mask mask-squircle w-12 h-12">
-                        <img src={tableimg} alt="" />
-                      </div></td>
-                    <td>Abu Jahel</td>
-                    <td>10110</td>
-                    <td>1965230</td>
-                    <td>10</td>
-                    <td className="flex gap-2">
-                      <button className="btn-xs bg-green-500 rounded-lg font-semibold uppercase hover:bg-green-800 hover:text-white">Edit</button>
-                      <button className="btn-xs bg-blue-500 rounded-lg font-semibold uppercase hover:bg-blue-800 hover:text-white">Approve</button>
-                      <button className="btn-xs bg-red-500 rounded-lg font-semibold uppercase hover:bg-red-800 hover:text-white">Delete</button>
-                    </td>
-                  </tr>
-                  {/* row-3  */}
-                  <tr>
-                    <td>3</td>
-                    <td>
-                      <div className="mask mask-squircle w-12 h-12">
-                        <img src={tableimg} alt="" />
-                      </div></td>
-                    <td>Abu Jahel</td>
-                    <td>10110</td>
-                    <td>1965230</td>
-                    <td>10</td>
-                    <td className="flex gap-2">
-                      <button className="btn-xs bg-green-500 rounded-lg font-semibold uppercase hover:bg-green-800 hover:text-white">Edit</button>
-                      <button className="btn-xs bg-blue-500 rounded-lg font-semibold uppercase hover:bg-blue-800 hover:text-white">Approve</button>
-                      <button className="btn-xs bg-red-500 rounded-lg font-semibold uppercase hover:bg-red-800 hover:text-white">Delete</button>
-                    </td>
-                  </tr>
-                  {/* row-4  */}
-                  <tr>
-                    <td>4</td>
-                    <td>
-                      <div className="mask mask-squircle w-12 h-12">
-                        <img src={tableimg} alt="" />
-                      </div></td>
-                    <td>Abu Jahel</td>
-                    <td>10110</td>
-                    <td>1965230</td>
-                    <td>10</td>
-                    <td className="flex gap-2">
-                      <button className="btn-xs bg-green-500 rounded-lg font-semibold uppercase hover:bg-green-800 hover:text-white">Edit</button>
-                      <button className="btn-xs bg-blue-500 rounded-lg font-semibold uppercase hover:bg-blue-800 hover:text-white">Approve</button>
-                      <button className="btn-xs bg-red-500 rounded-lg font-semibold uppercase hover:bg-red-800 hover:text-white">Delete</button>
-                    </td>
-                  </tr>
-                  {/* row-5  */}
-                  <tr>
-                    <td>5</td>
-                    <td>
-                      <div className="mask mask-squircle w-12 h-12">
-                        <img src={tableimg} alt="" />
-                      </div></td>
-                    <td>Abu Jahel</td>
-                    <td>10110</td>
-                    <td>1965230</td>
-                    <td>10</td>
-                    <td className="flex gap-2">
-                      <button className="btn-xs bg-green-500 rounded-lg font-semibold uppercase hover:bg-green-800 hover:text-white">Edit</button>
-                      <button className="btn-xs bg-blue-500 rounded-lg font-semibold uppercase hover:bg-blue-800 hover:text-white">Approve</button>
-                      <button className="btn-xs bg-red-500 rounded-lg font-semibold uppercase hover:bg-red-800 hover:text-white">Delete</button>
-                    </td>
-                  </tr>
+                  })}
                 </tbody>
               </table>
             </div>

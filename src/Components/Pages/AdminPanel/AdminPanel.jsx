@@ -8,34 +8,64 @@ import Swal from "sweetalert2";
 const AdminPanel = () => {
 
 
-    const [studentData, setStudentData] =useState([])
+    // const [studentData, setStudentData] =useState([])
 
-    const navigate = useNavigate();
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            navigate('/adminlogin');
-            Swal.fire({
-                position: 'center',
-                icon: 'warning',
-                title: 'You have to Login first',
-                showConfirmButton: false,
-                timer: 1500
-            });
-        } else {
-            const user = JSON.parse(localStorage.getItem('user'));
-            const headers = {
-                accept: 'application/json',
-                Authorization: 'Bearer ' + user.token
-            };
+    // const navigate = useNavigate();
+    // useEffect(() => {
+    //     const token = localStorage.getItem('token');
+    //     if (!token) {
+    //         navigate('/adminlogin');
+    //         Swal.fire({
+    //             position: 'center',
+    //             icon: 'warning',
+    //             title: 'You have to Login first',
+    //             showConfirmButton: false,
+    //             timer: 1500
+    //         });
+    //     } else {
+    //         const user = JSON.parse(localStorage.getItem('user'));
+    //         const headers = {
+    //             accept: 'application/json',
+    //             Authorization: 'Bearer ' + user.token
+    //         };
 
-            axios.get(`http://oottnxcpjz.ap.loclx.io/api/login`, {
-                headers: headers
-            })
-            .then((res) => { setStudentData(res.data); })
-            .catch((error) => { setStudentData(error); });
-        }
-    }, [navigate]);  
+    //         axios.get(`http://oottnxcpjz.ap.loclx.io/api/login`, {
+    //             headers: headers
+    //         })
+    //         .then((res) => { setStudentData(res.data); })
+    //         .catch((error) => { setStudentData(error); });
+    //     }
+    // }, [navigate]);  
+
+    // const [studentData, setStudentData] = useState([])
+    // const navigate = useNavigate();
+
+    // useEffect(() => {
+    //     const token = localStorage.getItem('token');
+    //     if (!token) {
+    //         Swal.fire({
+    //             position: 'center',
+    //             icon: 'warning',
+    //             title: 'You have to Login first',
+    //             showConfirmButton: false,
+    //             timer: 1500
+    //         });
+    //         navigate('/adminlogin');
+    //     } else {
+    //         const user = JSON.parse(localStorage.getItem('user'));
+    //         const headers = {
+    //             accept: 'application/json',
+    //             Authorization: 'Bearer ' + user.token
+    //         };
+
+    //         axios.get(`http://wjyc3bpfiy.ap.loclx.io/api/student-detail`, {
+    //             headers: headers
+    //         })
+    //             .then((res) => { setStudentData(res.data); })
+    //             .catch((error) => { setStudentData(error); });
+    //     }
+    // }, [navigate]);
+    // console.log(studentData);
 
   return (
     <div className="flex justify-between gap-1">
