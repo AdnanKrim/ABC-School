@@ -9,7 +9,7 @@ const SearchPanel = () => {
 
       {/* search section  */}
       <div className=" sm: hidden lg:flex md:flex">
-        <input type="text" placeholder="Search Setting" className="input input-bordered input-success lg:w-[700px] md:w-[500px]" />
+        <input type="text" placeholder="Search Setting" className="input input-bordered input-success lg:w-[700px] md:w-[350px]" />
         <button
           title="Wishlist"
           className=" text-white hover:text-blue-900 font-bold px-3 py-1

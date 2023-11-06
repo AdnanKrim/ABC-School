@@ -64,6 +64,7 @@ const handleDelete = (studentId) => {
         showConfirmButton: false,
         timer: 1500,
       });
+      navigate("/pendingStudent");
     })
     .catch((error) => {
       Swal.fire({
@@ -73,13 +74,14 @@ const handleDelete = (studentId) => {
         text: error.message, 
         showConfirmButton: true,
       });
+      navigate("/pendingStudent");
     });
 };
   
 
   return (
-    <div className="flex justify-between ">
-      <div>
+    <div className="flex justify-between">
+      <div className="z-10">
         <Drawer />
       </div>
       {/* table div  */}
@@ -127,11 +129,11 @@ const handleDelete = (studentId) => {
                   </div>
                 </div>
                 {/* add button  */}
-                <div>
+                {/* <div>
                   <button className="btn-xs bg-green-500 rounded-lg font-semibold uppercase hover:bg-green-800 hover:text-white">
                     Add
                   </button>
-                </div>
+                </div> */}
               </div>
               <table className="table table-lg table-pin-rows table-pin-cols border">
                 {/* head */}

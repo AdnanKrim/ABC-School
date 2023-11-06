@@ -28,6 +28,7 @@ import Routine from "./Components/Pages/Academic/Routine";
 import ApplyOnline from "./Components/Pages/Admission/ApplyOnline";
 import ApplyMethod from "./Components/Pages/Admission/ApplyMethod";
 import OurHistory from "./Components/Pages/About/OurHistory";
+import StudentEdit from "./Components/Pages/AdminPanel/Navigation/StudentEdit";
 
 const router = createBrowserRouter([
   {
@@ -35,8 +36,8 @@ const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
-// default panel route ---------------------------
-// Home section 
+      // default panel route ---------------------------
+      // Home section
       {
         path: "/",
         element: <Home />,
@@ -45,18 +46,18 @@ const router = createBrowserRouter([
         path: "/fullMessages",
         element: <FullMessages />,
       },
-// Academic section
+      // Academic section
       {
         path: "/ourCampus",
         element: <OurCampus />,
       },
       {
-        path:"/academicRules",
-        element:<AcademicRules/>
+        path: "/academicRules",
+        element: <AcademicRules />,
       },
       {
-        path:"/academicCalender",
-        element:<AcademicCalender/>
+        path: "/academicCalender",
+        element: <AcademicCalender />,
       },
       {
         path: "/routine",
@@ -66,16 +67,16 @@ const router = createBrowserRouter([
         path: "/syllabus",
         element: <Syllabus />,
       },
-// Admission section
+      // Admission section
       {
-        path:"/applyOnline",
-        element:<ApplyOnline/>
+        path: "/applyOnline",
+        element: <ApplyOnline />,
       },
       {
-        path:"/applyMethod",
-        element:<ApplyMethod/>
+        path: "/applyMethod",
+        element: <ApplyMethod />,
       },
-// About section
+      // About section
       {
         path: "/ourHistory",
         element: <OurHistory />,
@@ -88,12 +89,12 @@ const router = createBrowserRouter([
         path: "/employees",
         element: <Employees />,
       },
-// Notice section 
+      // Notice section
       {
         path: "/notice",
         element: <Notice />,
       },
-// Payment section      
+      // Payment section
       {
         path: "/enterPhone",
         element: <EnterPhone />,
@@ -110,7 +111,7 @@ const router = createBrowserRouter([
         path: "/Payment",
         element: <Payment />,
       },
-// login and signup section
+      // login and signup section
       {
         path: "/login",
         element: <Login />,
@@ -119,7 +120,7 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <SignUp />,
       },
-// admin panel route ---------------------------
+      // admin panel route ---------------------------
       {
         path: "/adminlogin",
         element: <AdminLogin />,
@@ -135,6 +136,10 @@ const router = createBrowserRouter([
       {
         path: "/allStudent",
         element: <AllStudent />,
+      },
+      {
+        path: "/studentEdit",
+        element: <StudentEdit />,
       },
     ],
   },

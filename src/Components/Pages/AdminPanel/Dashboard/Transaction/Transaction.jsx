@@ -53,7 +53,7 @@ const Transaction = () => {
             </h5>
           </div>
           <div>
-            <div className="z-20 inline-block me-6">
+            <div className="md:z-10 inline-block me-6">
               <select
                 name=""
                 id=""

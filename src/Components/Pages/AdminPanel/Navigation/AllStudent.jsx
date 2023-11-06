@@ -1,49 +1,50 @@
 import SearchPanel from "../Dashboard/SearchPanel/SearchPanel";
 import Drawer from "../Dashboard/SearchPanel/Drawer";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
+// import { useEffect, useState } from "react";
+// import axios from "axios";
+// import { useNavigate } from "react-router-dom";
+// import Swal from "sweetalert2";
 
 const AllStudent = () => {
-  const [allStudents, setAllStudents] = useState([]);
+  // const [allStudents, setAllStudents] = useState([]);
 
-  const navigate = useNavigate();
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      Swal.fire({
-        position: "center",
-        icon: "warning",
-        title: "You have to Login first",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      navigate("/adminlogin");
-    } else {
-      const user = JSON.parse(localStorage.getItem("user"));
-      const headers = {
-        accept: "application/json",
-        Authorization: "Bearer " + user.token,
-      };
+  // const navigate = useNavigate();
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     Swal.fire({
+  //       position: "center",
+  //       icon: "warning",
+  //       title: "You have to Login first",
+  //       showConfirmButton: false,
+  //       timer: 1500,
+  //     });
+  //     navigate("/adminlogin");
+  //   } else {
+  //     const user = JSON.parse(localStorage.getItem("user"));
+  //     const headers = {
+  //       accept: "application/json",
+  //       Authorization: "Bearer " + user.token,
+  //     };
 
-      axios
-        .get(`http://127.0.0.1:8000/api/student-list`, {
-          headers: headers,
-        })
-        .then((res) => {
-          setAllStudents(res.data);
-        })
-        .catch((error) => {
-          setAllStudents(error);
-        });
-    }
-  }, [navigate]);
-  console.log(allStudents.student);
+  //     axios
+  //       .get(`http://127.0.0.1:8000/api/student-list`, {
+  //         headers: headers,
+  //       })
+  //       .then((res) => {
+  //         setAllStudents(res.data);
+  //       })
+  //       .catch((error) => {
+  //         setAllStudents(error);
+  //       });
+  //   }
+  // }, [navigate]);
+  // console.log(allStudents.student);
 
   return (
     <div className="flex justify-between">
-      <div>
+      <div className="z-10">
         <Drawer />
       </div>
       {/* table div  */}
@@ -61,7 +62,6 @@ const AllStudent = () => {
 
             {/* table section  */}
             <div className="overflow-x-auto lg:ms-0 md:ms-0 ">
-              {/* sm: ms-[450px] */}
               {/* search and add field  */}
               <div className="flex justify-between items-center">
                 {/* search input  */}
@@ -111,7 +111,7 @@ const AllStudent = () => {
                   </tr>
                 </thead>
                 <tbody>
-                {allStudents.student &&
+                {/* {allStudents.student &&
                     allStudents.student.map((student, index) => (
                       <tr key={student.id}>
                         <td>{index + 1}</td>
@@ -136,7 +136,18 @@ const AllStudent = () => {
                           </button>
                         </td>
                       </tr>
-                    ))}
+                    ))} */}
+                    <td className="flex gap-2">
+                          <Link to="/studentEdit"><button className="btn-xs bg-green-500 rounded-lg font-semibold uppercase hover:bg-green-800 hover:text-white">
+                            Edit
+                          </button></Link>
+                          <button className="btn-xs bg-blue-500 rounded-lg font-semibold uppercase hover:bg-blue-800 hover:text-white">
+                            Approve
+                          </button>
+                          <button className="btn-xs bg-red-500 rounded-lg font-semibold uppercase hover:bg-red-800 hover:text-white">
+                            Delete
+                          </button>
+                        </td>
                 </tbody>
               </table>
             </div>

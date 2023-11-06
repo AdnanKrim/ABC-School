@@ -12,7 +12,7 @@ const Drawer = () => {
           <div className="drawer-content flex flex-col items-center justify-center">
             {/* Page content here */}
       <label htmlFor="my-drawer" 
-        className="border border-blue-600 hover:bg-blue-500
+        className=" border border-blue-600 hover:bg-blue-500
          hover:text-black w[2px] h-[20px] py-[31px] flex items-center 
          lg:hidden md:mt-0 md:me-[1000px] bg-blue-600 sm: me-[1000px] ">
                 <BiMenuAltLeft size={40} />
