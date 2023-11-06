@@ -42,7 +42,7 @@ const AllStudent = () => {
   console.log(allStudents.student);
 
   return (
-    <div className="flex justify-between ">
+    <div className="flex justify-between">
       <div>
         <Drawer />
       </div>

@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const AllStudent = () => {
+const PendingStudent = () => {
   const [pendStudents, setPendStudents] = useState([]);
 
   const navigate = useNavigate();
@@ -34,44 +34,48 @@ const AllStudent = () => {
           setPendStudents(res.data);
         })
         .catch((error) => {
-          setPendStudents(error);
+          console.log(error);
         });
     }
   }, [navigate]);
   console.log(pendStudents.student);
 
-  // delete section
-  const handleDelete = (studentId) => {
-    axios.delete(`http://127.0.0.1:8000/api/student-list/${studentId}`)
-      .then((response) => {
-        if (response.status === 200) {
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Successfully Logged In',
-            showConfirmButton: false,
-            timer: 1500
-        });
-          const updatedStudents = pendStudents.student.filter(
-            (student) => student.id !== studentId
-          );
-          setPendStudents({ student: updatedStudents });
 
-          Swal.fire({
-            icon: "success",
-            title: "Student Deleted",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      })
-      .catch((error) => {
-        Swal.fire({
-          icon: "error",
-          title: "Error deleting student",
-        });
-      });
+// delete section
+const handleDelete = (studentId) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const headers = {
+    accept: "application/json",
+    Authorization: "Bearer " + user.token,
   };
+
+  axios
+    .delete(`http://127.0.0.1:8000/api/delete-student/${studentId}`, {
+      headers: headers,
+    })
+    .then(() => {
+      setPendStudents((prevStudents) =>
+        prevStudents.filter((student) => student.student_id !== studentId)
+      );
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Student deleted successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    })
+    .catch((error) => {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Error deleting student",
+        text: error.message, 
+        showConfirmButton: true,
+      });
+    });
+};
+  
 
   return (
     <div className="flex justify-between ">
@@ -87,7 +91,7 @@ const AllStudent = () => {
           <div className="mt-20 me-28">
             {/* AdminStudentInfo section  */}
             <h1 className="mt-8 text-3xl font-semibold uppercase text-black flex justify-center ">
-              All Student
+              Pending Student
             </h1>
             <hr className="border border-black mb-8" />
 
@@ -192,4 +196,4 @@ const AllStudent = () => {
   );
 };
 
-export default AllStudent;
+export default PendingStudent;

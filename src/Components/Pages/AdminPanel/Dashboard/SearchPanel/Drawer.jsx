@@ -6,8 +6,8 @@ import { MdArrowDropDown } from "react-icons/md";
 
 const Drawer = () => {
     return (
-        <div>
-        <div className="z-10 drawer lg:drawer-open fixed">
+        <div className="z-10">
+        <div className="drawer lg:drawer-open fixed ">
           <input id="my-drawer" type="checkbox" className="drawer-toggle " />
           <div className="drawer-content flex flex-col items-center justify-center">
             {/* Page content here */}

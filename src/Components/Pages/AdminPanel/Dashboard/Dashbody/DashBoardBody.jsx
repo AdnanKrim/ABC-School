@@ -7,7 +7,7 @@ import Transaction from "../Transaction/Transaction";
 
 const DashBoardBody = () => {
   return (
-    <div className="text-white ">
+    <div className="text-white z-10">
       {/* search panel  */}
       <div className="me-5">
         <SearchPanel />
