@@ -1,6 +1,7 @@
-import Advertisement from '../../Shared/Advertisement/Advertisement';
-import Banner from '../../Shared/Banner/Banner';
-import Messages from '../../Shared/Messages/Messages';
+import Advertisement from "./Advertisement";
+import Banner from "./Banner";
+import Messages from "./Messages";
+
 
 const Home = () => {
     return (

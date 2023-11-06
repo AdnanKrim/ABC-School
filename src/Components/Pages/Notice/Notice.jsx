@@ -55,7 +55,7 @@ const Notice = () => {
               className="flex justify-between w-full font-bold"
               style={{ fontFamily: "Mooli, sans-serif" }}
             >
-              <td className="w-1/2 border-r">Notice</td>
+              <td className="w-1/2 border-r-2">Notice</td>
               <td className="w-1/4">Publish Date</td>
             </tr>
           </thead>
@@ -63,7 +63,7 @@ const Notice = () => {
           <tbody>
             {notices.map((notice) => {
               <tr key={notice.id} className="flex justify-between w-full">
-                <td className="w-1/2 border-r">
+                <td className="w-1/2 border-r-2">
                 <a href={notice.pdfUrl} target="_blank" rel="noopener noreferrer">
                   {notice.pdftitle}</a>
                   </td>
