@@ -1,22 +1,45 @@
 import SearchPanel from "../Dashboard/SearchPanel/SearchPanel";
-import tableimg from "../../../../../public/images/Unknown.png";
 import Drawer from "../Dashboard/SearchPanel/Drawer";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const AllStudent = () => {
   const [allStudents, setAllStudents] = useState([]);
 
+  const navigate = useNavigate();
   useEffect(() => {
-    axios .get("https://example.com/api/allStudents")
-      .then((res) => {
-        setAllStudents(res.data);
-      })
-      .catch((error) => {
-        console.error("An error occurred:", error);
+    const token = localStorage.getItem("token");
+    if (!token) {
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "You have to Login first",
+        showConfirmButton: false,
+        timer: 1500,
       });
-  }, []);
-  console.log(allStudents);
+      navigate("/adminlogin");
+    } else {
+      const user = JSON.parse(localStorage.getItem("user"));
+      const headers = {
+        accept: "application/json",
+        Authorization: "Bearer " + user.token,
+      };
+
+      axios
+        .get(`http://127.0.0.1:8000/api/student-list`, {
+          headers: headers,
+        })
+        .then((res) => {
+          setAllStudents(res.data);
+        })
+        .catch((error) => {
+          setAllStudents(error);
+        });
+    }
+  }, [navigate]);
+  console.log(allStudents.student);
 
   return (
     <div className="flex justify-between ">
@@ -88,31 +111,32 @@ const AllStudent = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {allStudents.map((students, index) => {
-                    <tr key={students.id}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <div className="mask mask-squircle w-12 h-12">
-                          <img src={students.img} alt="" />
-                        </div>
-                      </td>
-                      <td>{students.name}</td>
-                      <td>{students.roll}</td>
-                      <td>{students.registration}</td>
-                      <td>{students.class}</td>
-                      <td className="flex gap-2">
-                        <button className="btn-xs bg-green-500 rounded-lg font-semibold uppercase hover:bg-green-800 hover:text-white">
-                          Edit
-                        </button>
-                        <button className="btn-xs bg-blue-500 rounded-lg font-semibold uppercase hover:bg-blue-800 hover:text-white">
-                          Approve
-                        </button>
-                        <button className="btn-xs bg-red-500 rounded-lg font-semibold uppercase hover:bg-red-800 hover:text-white">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>;
-                  })}
+                {allStudents.student &&
+                    allStudents.student.map((student, index) => (
+                      <tr key={student.id}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <div className="mask mask-squircle w-12 h-12">
+                            <img src={student.image} alt="" />
+                          </div>
+                        </td>
+                        <td>{student.name}</td>
+                        <td>{student.rollNo}</td>
+                        <td>{student.regNo}</td>
+                        <td>{student.class}</td>
+                        <td className="flex gap-2">
+                          <button className="btn-xs bg-green-500 rounded-lg font-semibold uppercase hover:bg-green-800 hover:text-white">
+                            Edit
+                          </button>
+                          <button className="btn-xs bg-blue-500 rounded-lg font-semibold uppercase hover:bg-blue-800 hover:text-white">
+                            Approve
+                          </button>
+                          <button className="btn-xs bg-red-500 rounded-lg font-semibold uppercase hover:bg-red-800 hover:text-white">
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             </div>
@@ -133,4 +157,4 @@ const AllStudent = () => {
   );
 };
 
-export default AllStudent;
+export default AllStudent

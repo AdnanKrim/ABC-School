@@ -77,11 +77,12 @@ const StudentDetails = () => {
                     </div>
                     {/* StudentDetails information  */}
 
-                    <div className="flex justify-center items-center"><img className='w-[250px] h-[250px] rounded-xl bg-yellow-200' src={studentData?.image} alt="" /></div>
+                    <div className="flex justify-center items-center"><img className='w-[250px] h-[250px] rounded-xl bg-yellow-200' src={studentData?.file} alt="" /></div>
                     <div className="flex">
+                    {studentData.user && (
                         <div className=" text-lg grid sm: grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-10  md:gap-10 mt-10">
                             <div className="leading-10">
-                                <h1><span className="font-bold text-xl">Name:</span>{studentData?.file}</h1>
+                                <h1><span className="font-bold text-xl">Name:</span>{studentData?.user.name}</h1>
                                 {/* eslint-disable-next-line react/no-unescaped-entities */}
                                 <h1><span className="font-bold text-xl">Father's Name:</span>{studentData?.user.fatherName}</h1>
                                 {/* eslint-disable-next-line react/no-unescaped-entities */}
@@ -104,6 +105,7 @@ const StudentDetails = () => {
                                 </div>
                             </div>
                         </div>
+                          )}
                     </div>
                 </div>
             </div>
