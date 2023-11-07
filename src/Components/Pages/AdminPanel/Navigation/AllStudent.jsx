@@ -81,7 +81,7 @@ const AllStudent = () => {
 
   return (
     <div className="flex justify-between">
-      <div className="z-10">
+      <div className="">
         <Drawer />
       </div>
       {/* table div  */}
@@ -183,6 +183,12 @@ const AllStudent = () => {
                         </td>
                       </tr>
                     ))}
+                    {/* Edit button  */}
+                    <Link to="/studentEdit">
+                            <button className="btn-xs bg-green-500 rounded-lg font-semibold uppercase hover:bg-green-800 hover:text-white">
+                              Edit
+                            </button>
+                          </Link>
                 </tbody>
               </table>
             </div>

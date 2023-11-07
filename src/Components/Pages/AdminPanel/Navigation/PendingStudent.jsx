@@ -2,7 +2,7 @@ import SearchPanel from "../Dashboard/SearchPanel/SearchPanel";
 import Drawer from "../Dashboard/SearchPanel/Drawer";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const PendingStudent = () => {
@@ -80,7 +80,7 @@ const PendingStudent = () => {
 
   return (
     <div className="flex justify-between">
-      <div className="z-10">
+      <div className="">
         <Drawer />
       </div>
       {/* table div  */}
@@ -162,21 +162,33 @@ const PendingStudent = () => {
                         <td>{student.regNo}</td>
                         <td>{student.class}</td>
                         <td className="flex gap-2">
-                          <button className="btn-xs bg-green-500 rounded-lg font-semibold uppercase hover:bg-green-800 hover:text-white">
-                            Edit
-                          </button>
+ {/* Edit button  */}
+                          <Link to="/studentEdit">
+                            <button className="btn-xs bg-green-500 rounded-lg font-semibold uppercase hover:bg-green-800 hover:text-white">
+                              Edit
+                            </button>
+                          </Link>
+ {/* Approve button  */}
                           <button className="btn-xs bg-blue-500 rounded-lg font-semibold uppercase hover:bg-blue-800 hover:text-white">
                             Approve
                           </button>
+ {/* Delete button  */}
                           <button
                             onClick={() => handleDelete(student.id)}
                             className="btn-xs bg-red-500 rounded-lg font-semibold uppercase hover:bg-red-800 hover:text-white"
                           >
                             Delete
                           </button>
+
                         </td>
                       </tr>
                     ))}
+                     {/* Edit button  */}
+                     <Link to="/studentEdit">
+                            <button className="btn-xs bg-green-500 rounded-lg font-semibold uppercase hover:bg-green-800 hover:text-white">
+                              Edit
+                            </button>
+                          </Link>
                 </tbody>
               </table>
             </div>

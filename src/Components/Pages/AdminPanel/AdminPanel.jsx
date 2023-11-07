@@ -28,7 +28,7 @@ const AdminPanel = () => {
       };
 
       axios
-        .get(`http://oottnxcpjz.ap.loclx.io/api/login`, {
+        .get(`http://sml4kzlfjc.ap.loclx.io/api/login`, {
           headers: headers,
         })
         .then((res) => {

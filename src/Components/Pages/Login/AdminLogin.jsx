@@ -35,7 +35,7 @@ function AdminLogin() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Email:', email, 'Password:', password);
-    axios.post(``, data)
+    axios.post(`http://sml4kzlfjc.ap.loclx.io/api/login`, data)
     .then(res => {
         if (res.data.status === "201" ) {
             Swal.fire({

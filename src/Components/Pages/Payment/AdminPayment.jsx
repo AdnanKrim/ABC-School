@@ -1,5 +1,6 @@
-import SearchPanel from "../Dashboard/SearchPanel/SearchPanel";
-import Drawer from "../Dashboard/SearchPanel/Drawer";
+import Drawer from "../AdminPanel/Dashboard/SearchPanel/Drawer";
+import SearchPanel from "../AdminPanel/Dashboard/SearchPanel/SearchPanel";
+
 
 const AdminPayment = () => {
     return (
@@ -19,7 +20,7 @@ const AdminPayment = () => {
                 All Student
               </h1>
               <hr className="border border-black mb-8" />
-  
+{/* Payment information  */}
             
         </div>
         </div>

@@ -4,9 +4,10 @@ import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const StudentEdit = () => {
-
+// post method ------------
   const [name, setName] = useState("");
   const [fatherName, setfatherName] = useState("");
   const [motherName, setmotherName] = useState("");
@@ -21,6 +22,7 @@ const StudentEdit = () => {
   const [section, setsection] = useState("");
   const navigate = useNavigate();
 
+// handle control --------------------
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -88,7 +90,7 @@ const StudentEdit = () => {
     data.append("section", section);
     console.log(data);
     console.log("Selected Image:", image);
-
+// post method ------------------------
     axios.post('http://127.0.0.1:8000/api/student-reg', data,)
       .then((res) => {
         console.log('Data:', res.data);
@@ -117,10 +119,32 @@ const StudentEdit = () => {
     setwclass('');
     setsection('');
   };
+  // get method ----------------------
+  useEffect(() => {
+  axios.get('')
+  .then((res) => {
+    const studentData = res.data;
+    setName(studentData.name);
+    setfatherName(studentData.fatherName);
+    setmotherName(studentData.motherName);
+    setBirthDate(studentData.birthDate);
+    setEmail(studentData.email);
+    setAddress(studentData.address);
+    setphoneNo(studentData.phoneNo);
+    setImage(studentData.image);
+    setrollNo(studentData.rollNo);
+    setregNo(studentData.regNo);
+    setwclass(studentData.wclass);
+    setsection(studentData.section);
+  })
+  .catch((error) => {
+    console.error('An error occurred while fetching data:', error);
+  });
+}, []);
 
   return (
     <div className="flex justify-between">
-      <div className="z-10">
+      <div className="">
         <Drawer />
       </div>
       {/* table div  */}
@@ -148,7 +172,7 @@ const StudentEdit = () => {
             <input
               required
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-3"
-              placeholder="Add Name"
+              // placeholder="Add Name"
               type="text"
               name="name"
               id="name"
@@ -164,7 +188,7 @@ const StudentEdit = () => {
               <input
                 required
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Add Father Name"
+                // placeholder="Add Father Name"
                 type="text"
                 name="fatherName"
                 id="fatherName"
@@ -177,7 +201,7 @@ const StudentEdit = () => {
               <label htmlFor="motherName">Mother's Name:</label>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Add Mother Name"
+                // placeholder="Add Mother Name"
                 type="text"
                 name="motherName"
                 id="motherName"
@@ -194,7 +218,7 @@ const StudentEdit = () => {
               <input
                 required
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Add Phone Number"
+                // placeholder="Add Phone Number"
                 type="number"
                 name="phoneNo"
                 id="phoneNo"
@@ -222,7 +246,7 @@ const StudentEdit = () => {
               <input
                 required
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Add Email"
+                // placeholder="Add Email"
                 type="email"
                 name="email"
                 id="email"
@@ -234,7 +258,7 @@ const StudentEdit = () => {
               <label htmlFor="address">Address:</label>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Add address"
+                // placeholder="Add address"
                 type="text"
                 name="address"
                 id="address"
@@ -251,7 +275,7 @@ const StudentEdit = () => {
               <input
                 required
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Add Roll Number"
+                // placeholder="Add Roll Number"
                 type="number"
                 name="rollNo"
                 id="rollNo"
@@ -264,7 +288,7 @@ const StudentEdit = () => {
               <input
                 required
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Add Registration Number"
+                // placeholder="Add Registration Number"
                 type="number"
                 name="regNo"
                 id="regNo"
@@ -282,7 +306,7 @@ const StudentEdit = () => {
               <input
                 required
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Add Class"
+                // placeholder="Add Class"
                 type="wclass"
                 name="wclass"
                 id="wclass"
@@ -294,7 +318,7 @@ const StudentEdit = () => {
               <label htmlFor="section">Section:</label>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Add section"
+                // placeholder="Add section"
                 type="text"
                 name="section"
                 id="section"
