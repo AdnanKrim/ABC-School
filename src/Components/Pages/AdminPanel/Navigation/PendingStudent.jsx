@@ -9,6 +9,7 @@ const PendingStudent = () => {
   const [pendStudents, setPendStudents] = useState([]);
 
   const navigate = useNavigate();
+  
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -40,44 +41,42 @@ const PendingStudent = () => {
   }, [navigate]);
   console.log(pendStudents.student);
 
+  // delete section
+  const handleDelete = (studentId) => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const headers = {
+      accept: "application/json",
+      Authorization: "Bearer " + user.token,
+    };
 
-// delete section
-const handleDelete = (studentId) => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  const headers = {
-    accept: "application/json",
-    Authorization: "Bearer " + user.token,
+    axios
+      .delete(`http://127.0.0.1:8000/api/delete-student/${studentId}`, {
+        headers: headers,
+      })
+      .then(() => {
+        setPendStudents((prevStudents) =>
+          prevStudents.filter((student) => student.student_id !== studentId)
+        );
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Student deleted successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/pendingStudent");
+      })
+      .catch((error) => {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Error deleting student",
+          text: error.message,
+          showConfirmButton: true,
+        });
+        navigate("/pendingStudent");
+      });
   };
-
-  axios
-    .delete(`http://127.0.0.1:8000/api/delete-student/${studentId}`, {
-      headers: headers,
-    })
-    .then(() => {
-      setPendStudents((prevStudents) =>
-        prevStudents.filter((student) => student.student_id !== studentId)
-      );
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Student deleted successfully",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      navigate("/pendingStudent");
-    })
-    .catch((error) => {
-      Swal.fire({
-        position: "center",
-        icon: "error",
-        title: "Error deleting student",
-        text: error.message, 
-        showConfirmButton: true,
-      });
-      navigate("/pendingStudent");
-    });
-};
-  
 
   return (
     <div className="flex justify-between">

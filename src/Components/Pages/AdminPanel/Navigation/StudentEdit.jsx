@@ -104,18 +104,18 @@ const StudentEdit = () => {
       .catch((error) => {
         console.error('An error occurred:', error);
       });
-    // setName('');
-    // setfatherName('');
-    // setmotherName('');
-    // setBirthDate('');
-    // setEmail('');
-    // setAddress('');
-    // setphoneNo('');
-    // setImage('');
-    // setrollNo('');
-    // setregNo('');
-    // setwclass('');
-    // setsection('');
+    setName('');
+    setfatherName('');
+    setmotherName('');
+    setBirthDate('');
+    setEmail('');
+    setAddress('');
+    setphoneNo('');
+    setImage('');
+    setrollNo('');
+    setregNo('');
+    setwclass('');
+    setsection('');
   };
 
   return (

@@ -29,6 +29,7 @@ import ApplyOnline from "./Components/Pages/Admission/ApplyOnline";
 import ApplyMethod from "./Components/Pages/Admission/ApplyMethod";
 import OurHistory from "./Components/Pages/About/OurHistory";
 import StudentEdit from "./Components/Pages/AdminPanel/Navigation/StudentEdit";
+import AdminPayment from "./Components/Pages/Payment/AdminPayment";
 
 const router = createBrowserRouter([
   {
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
-      // default panel route ---------------------------
+// default panel route ---------------------------
       // Home section
       {
         path: "/",
@@ -120,7 +121,7 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <SignUp />,
       },
-      // admin panel route ---------------------------
+// admin panel route ---------------------------
       {
         path: "/adminlogin",
         element: <AdminLogin />,
@@ -140,6 +141,10 @@ const router = createBrowserRouter([
       {
         path: "/studentEdit",
         element: <StudentEdit />,
+      },
+      {
+        path: "/adminPayment",
+        element: <AdminPayment />,
       },
     ],
   },

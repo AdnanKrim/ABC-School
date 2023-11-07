@@ -2,16 +2,16 @@ import { useState } from "react";
 import adminloginPhoto from "../../../../public/images/educational_board.png";
 import adminloginbanner from "../../../../public/images/educational_board.png";
 import marketien from "../../../../public/icons/Main Logo-01.png";
-// import axios from "axios";
-// import Swal from "sweetalert2";
-// import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 function AdminLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -30,52 +30,52 @@ function AdminLogin() {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-  // const data = { email, password };
+  const data = { email, password };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Email:', email, 'Password:', password);
-    // axios.post(``, data)
-    // .then(res => {
-    //     if (res.data.status === "201" ) {
-    //         Swal.fire({
-    //             position: 'center',
-    //             icon: 'success',
-    //             title: 'Successfully Logged In',
-    //             showConfirmButton: false,
-    //             timer: 1500
-    //         });
-            // if(res.data?.user?.role === "1"){
-            //   localStorage.setItem('user', JSON.stringify(res.data))
-            //   navigate('/studentDetails');
-            // }else{
-            //   Swal.fire({
-            //     icon: 'error',
-            //     title: 'Oops...',
-            //     text: "You are not eligible for this page",
-            //   });
-            // }
-  // localStorage.setItem('token', res.data.token);
-  // localStorage.setItem('user', JSON.stringify(res.data));
-  //           navigate('/dp');
-  //       }
-  //       else if (res.data.status === "403") {
-  //           Swal.fire({
-  //               icon: 'error',
-  //               title: 'Oops...',
-  //               text: "Invalid Password",
-  //             });
-  //       }
+    axios.post(``, data)
+    .then(res => {
+        if (res.data.status === "201" ) {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Successfully Logged In',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            if(res.data?.user?.role === "1"){
+              localStorage.setItem('user', JSON.stringify(res.data))
+              navigate('/studentDetails');
+            }else{
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "You are not eligible for this page",
+              });
+            }
+  localStorage.setItem('token', res.data.token);
+  localStorage.setItem('user', JSON.stringify(res.data));
+            navigate('/dp');
+        }
+        else if (res.data.status === "403") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "Invalid Password",
+              });
+        }
         
-  //       else {
-  //           Swal.fire({
-  //               icon: 'error',
-  //               title: 'Oops...',
-  //               text: 'Something went wrong!',
-  //               footer: "Access Denied",
-  //           });
-  //       }
-  //   })
+        else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: "Access Denied",
+            });
+        }
+    })
   };
 
   const backgroundStyles = {
