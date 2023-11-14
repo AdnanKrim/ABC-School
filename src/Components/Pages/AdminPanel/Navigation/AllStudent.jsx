@@ -51,7 +51,7 @@ const AllStudent = () => {
       };
   
       axios
-        .delete(`http://127.0.0.1:8000/api/delete-student/${studentId}`, {
+        .delete(`http://127.0.0.1:8000/api/student-delete/${studentId}`, {
           headers: headers,
         })
         .then(() => {
@@ -163,13 +163,13 @@ const AllStudent = () => {
                         <td>{student.class}</td>
                         <td className="flex gap-2">
 {/* Edit button  */}
-                          <Link to="/studentEdit">
+                         <Link to={`/studentEdit/${student.id}`}>
                             <button className="btn-xs bg-green-500 rounded-lg font-semibold uppercase hover:bg-green-800 hover:text-white">
                               Edit
                             </button>
-                          </Link>
+                            </Link>
 {/* Details button  */}
-                          <Link to="/adminPayment">
+                          <Link to={`/adminPayment/${student.id}`}>
                             <button className="btn-xs bg-blue-500 rounded-lg font-semibold uppercase hover:bg-blue-800 hover:text-white">
                               Details
                             </button>
@@ -183,13 +183,15 @@ const AllStudent = () => {
                         </td>
                       </tr>
                     ))}
-                    {/* Edit button  */}
-                    <Link to="/studentEdit">
-                            <button className="btn-xs bg-green-500 rounded-lg font-semibold uppercase hover:bg-green-800 hover:text-white">
-                              Edit
-                            </button>
-                          </Link>
+                  
+                    
                 </tbody>
+                <div>
+                  <Link to="/adminStudentAdd">
+                    <button className="btn-xs bg-green-500 rounded-lg font-semibold uppercase hover:bg-green-800 hover:text-white">
+                    Add
+                  </button></Link>
+                </div>
               </table>
             </div>
             {/* pagination here  */}

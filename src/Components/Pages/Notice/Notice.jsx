@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import backgroudphoto from "../../../../public/images/tree.jpg";
 import axios from "axios";
+import { BsFiletypePdf } from "react-icons/bs";
 
 const Notice = () => {
   const [notices, setNotices] = useState([]);
 
   useEffect(() => {
     axios
-      .get("https://example.com/api/allStudents")
+      .get("http://127.0.0.1:8000/api/notice-listApi")
       .then((res) => {
-        setNotices(res.data);
+        setNotices(res.data.notice);
       })
       .catch((error) => {
         console.error("An error occurred:", error);
@@ -17,6 +18,10 @@ const Notice = () => {
   }, []);
   console.log(notices);
 
+  // pdf section 
+  const handlePdfDownload = (pdflink) => {
+    window.open(pdflink, "_blank");
+  };
 
   return (
     <div>
@@ -36,7 +41,7 @@ const Notice = () => {
             style={{ fontFamily: "Mooli, sans-serif" }}
             className="text-3xl text-white font-semibold "
           >
-            Notice
+            Notice:{notices.length}
           </h1>
           <img
             className="w-[350px] h-[50px]"
@@ -56,20 +61,45 @@ const Notice = () => {
               style={{ fontFamily: "Mooli, sans-serif" }}
             >
               <td className="w-1/2 border-r-2">Notice</td>
-              <td className="w-1/4">Publish Date</td>
+              <td className="w-1/6 border-r-2">Publish Date</td>
+              <td className="w-1/6 border-r-2">Download</td>
             </tr>
           </thead>
           <hr />
           <tbody>
-            {notices.map((notice) => {
-              <tr key={notice.id} className="flex justify-between w-full">
-                <td className="w-1/2 border-r-2">
-                <a href={notice.pdfUrl} target="_blank" rel="noopener noreferrer">
-                  {notice.pdftitle}</a>
-                  </td>
-                <td className="w-1/4">{notice.date}</td>
-              </tr>;
-            })}
+          {notices.map((notice) => (
+    <tr key={notice.id} className="flex justify-between w-full">
+      <td className="w-1/2 border-r-2 border-b-2">{notice.subject}</td>
+      <td className="w-1/4 border-r-2 border-b-2 flex justify-center">
+        {notice.date}
+      </td>
+      <td className="w-1/4 flex justify-center py-2 border-b-2">
+        <BsFiletypePdf
+          onClick={() => handlePdfDownload(notice.pdflink)}
+          className="p-1 rounded-lg text-red-500 hover:text-white hover:bg-red-500 bg-white"
+         
+          size={40}
+        />
+      </td>
+    </tr>
+  ))}
+            {/* <tr className="flex justify-between w-full">
+              <td className="w-1/2 border-r-2">
+                <a href="/" target="_blank" rel="noopener noreferrer">
+                  class Off Notice
+                </a>
+              </td>
+              <td className="w-1/4 border-r-2 flex justify-center">
+                10 August 2023
+              </td>
+              <td className="w-1/4 flex justify-center py-2">
+                <BsFiletypePdf
+                 onClick={() => handlePdfDownload()}
+                  className=" p-1 rounded-lg text-red-500 hover:bg-red-500 hover:text-white"
+                  size={40}
+                />
+              </td>
+            </tr> */}
           </tbody>
           <hr />
         </table>

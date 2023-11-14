@@ -6,7 +6,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./Components/Shared/Layout/Layout";
 import ErrorPage from "./Components/Shared/ErrorPage/ErrorPage";
 import Home from "./Components/Pages/Home/Home";
-import Teachers from "./Components/Pages/About/Teachers";
 import Employees from "./Components/Pages/About/Employees";
 import FullMessages from "./Components/Pages/Home/FullMessages";
 import OurCampus from "./Components/Pages/Academic/OurCampus";
@@ -30,6 +29,14 @@ import ApplyMethod from "./Components/Pages/Admission/ApplyMethod";
 import OurHistory from "./Components/Pages/About/OurHistory";
 import StudentEdit from "./Components/Pages/AdminPanel/Navigation/StudentEdit";
 import AdminPayment from "./Components/Pages/Payment/AdminPayment";
+import AdminTeachers from "./Components/Pages/AdminPanel/Navigation/AdminTeachers";
+import AdminTeachersEdit from "./Components/Pages/AdminPanel/Navigation/AdminTeachersEdit";
+import AdminTeachersAdd from "./Components/Pages/AdminPanel/Navigation/AdminTeachersAdd";
+import AdminStudentAdd from "./Components/Pages/AdminPanel/Navigation/AdminStudentAdd";
+import Teachers from "./Components/Pages/About/Teachers";
+import AdminNotices from "./Components/Pages/AdminPanel/Navigation/AdminNotices";
+import AdminNoticesAdd from "./Components/Pages/AdminPanel/Navigation/AdminNoticeAdd";
+import AdminNoticesEdit from "./Components/Pages/AdminPanel/Navigation/AdminNoticesEdit";
 
 const router = createBrowserRouter([
   {
@@ -84,7 +91,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/teachers",
-        element: <Teachers />,
+        element: < Teachers/>,
       },
       {
         path: "/employees",
@@ -139,13 +146,41 @@ const router = createBrowserRouter([
         element: <AllStudent />,
       },
       {
-        path: "/studentEdit",
+        path: "/studentEdit/:studentId",
         element: <StudentEdit />,
       },
       {
-        path: "/adminPayment",
-        element: <AdminPayment />,
+        path: "/adminPayment/:studentId",
+        element: <AdminPayment/>,
       },
+      {
+        path: "/adminTeachers",
+        element:<AdminTeachers/>,
+      },
+      {
+        path: "/adminTeachersEdit/:teacherId",
+        element:<AdminTeachersEdit/>,
+      },
+      {
+        path:"/adminTeacherAdd",
+        element:<AdminTeachersAdd/>
+      },
+      {
+        path:"/adminStudentAdd",
+        element:<AdminStudentAdd/>
+      },
+      {
+        path:"/adminNotices",
+        element:<AdminNotices/>
+      },
+      {
+        path:"/adminNoticesAdd",
+        element:<AdminNoticesAdd/>
+      },
+      {
+        path:"/adminNoticesEdit/:noticeId",
+        element:<AdminNoticesEdit/>
+      }
     ],
   },
 ]);

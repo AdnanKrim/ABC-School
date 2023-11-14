@@ -37,16 +37,18 @@ const SignUP = () => {
   };
 
   const handleImageChange = (e) => {
-    const selectedImage = e.target.files[0];
-    if (selectedImage) {
-      const reader = new FileReader();
+    setImage(e.target.files[0]);
+    // const image = e.target.files[0];
+    // if (image) {
+    //   console.log("Selected Image:", image)
+    //   const reader = new FileReader();
 
-      reader.onload = (e) => {
-        const imagePreviewURL = e.target.result;
-        setImage(imagePreviewURL);
-      };
-      reader.readAsDataURL(selectedImage);
-    }
+    //   reader.onload = (e) => {
+    //     const imagePreviewURL = e.target.result;
+    //     setImage(imagePreviewURL);
+    //   };
+    //   reader.readAsDataURL(image);
+    // }
   };
 
   const handlephoneNoChange = (e) => {
@@ -68,8 +70,13 @@ const SignUP = () => {
     data.append("image", image);
     console.log(data);
     console.log("Selected Image:", image);
+    const headers = {
+      'Content-Type': 'multipart/form-data'
+    };
 
-    axios.post('http://127.0.0.1:8000/api/student-reg', data,)
+    axios.post('http://127.0.0.1:8000/api/student-reg', data,{
+      headers: headers,
+    })
       .then((res) => {
         console.log('Data:', res.data);
         Swal.fire({
@@ -84,14 +91,14 @@ const SignUP = () => {
       .catch((error) => {
         console.error('An error occurred:', error);
       });
-    setName('');
-    setfatherName('');
-    setmotherName('');
-    setBirthDate('');
-    setEmail('');
-    setPassword('');
-    setphoneNo('');
-    setImage('');
+    // setName('');
+    // setfatherName('');
+    // setmotherName('');
+    // setBirthDate('');
+    // setEmail('');
+    // setPassword('');
+    // setphoneNo('');
+    // setImage('');
   };
 
   const backgroundStyles = {
@@ -136,6 +143,7 @@ const SignUP = () => {
         {/* form section  */}
         <form
           onSubmit={handleSubmit}
+          encType="multipart/form-data"
           className="bg-gray-100 drop-shadow-2xl rounded-xl px-8 pt-6 pb-8 mb-4"
         >
           <h1 className="font-semibold text-center mb-3">
@@ -247,10 +255,10 @@ const SignUP = () => {
           <div>
             <label htmlFor="file">Picture: </label> <br />
             <input
-              required
+              // required
               className="file-input file-input-bordered file-input-primary w-full max-w-lg"
               type="file"
-              name="image"
+              name="file"
               id="file"
               // value={image}
               onChange={handleImageChange}

@@ -16,7 +16,14 @@ const Layout = () => {
         location.pathname.includes('Payment')  ||
         location.pathname.includes('enterPhone') ||
         location.pathname.includes('enterotp') ||
-        location.pathname.includes('studentEdit') 
+        location.pathname.includes('studentEdit') ||
+        location.pathname.includes('adminTeachers') ||       
+        location.pathname.includes('adminTeachersEdit')  ||      
+        location.pathname.includes('adminTeacherAdd') ||      
+        location.pathname.includes('adminStudentAdd')  ||     
+        location.pathname.includes('adminNotices') ||      
+        location.pathname.includes('adminNoticesAdd') ||      
+        location.pathname.includes('adminNoticesEdit')       
 
     return (
         <div>

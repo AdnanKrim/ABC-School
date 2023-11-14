@@ -9,7 +9,7 @@ const PendingStudent = () => {
   const [pendStudents, setPendStudents] = useState([]);
 
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -28,7 +28,7 @@ const PendingStudent = () => {
         Authorization: "Bearer " + user.token,
       };
       axios
-        .get(`http://127.0.0.1:8000/api/student-list`, {
+        .get(`http://127.0.0.1:8000/api/pending-student-list`, {
           headers: headers,
         })
         .then((res) => {
@@ -50,7 +50,7 @@ const PendingStudent = () => {
     };
 
     axios
-      .delete(`http://127.0.0.1:8000/api/delete-student/${studentId}`, {
+      .delete(`http://127.0.0.1:8000/api/student-delete/${studentId}`, {
         headers: headers,
       })
       .then(() => {
@@ -64,7 +64,7 @@ const PendingStudent = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate("/pendingStudent");
+        window.location.reload();
       })
       .catch((error) => {
         Swal.fire({
@@ -74,7 +74,42 @@ const PendingStudent = () => {
           text: error.message,
           showConfirmButton: true,
         });
-        navigate("/pendingStudent");
+        // navigate("/pendingStudent");
+      });
+  };
+  // approval section
+  const handleApprove = (studentId) => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const headers = {
+      accept: "application/json",
+      Authorization: "Bearer " + user.token,
+    };
+
+    axios
+      .get(`http://127.0.0.1:8000/api/student-approve/${studentId}`, {
+        headers: headers,
+      })
+      .then(() => {
+        setPendStudents((prevStudents) =>
+          prevStudents.filter((student) => student.student_id !== studentId)
+        );
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Student Approved successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        window.location.reload();
+      })
+      .catch((error) => {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Error approving student",
+          text: error.message,
+          showConfirmButton: true,
+        });
       });
   };
 
@@ -162,17 +197,19 @@ const PendingStudent = () => {
                         <td>{student.regNo}</td>
                         <td>{student.class}</td>
                         <td className="flex gap-2">
- {/* Edit button  */}
-                          <Link to="/studentEdit">
+                          {/* Edit button  */}
+                          <Link to={`/studentEdit/${student.id}`}>
                             <button className="btn-xs bg-green-500 rounded-lg font-semibold uppercase hover:bg-green-800 hover:text-white">
                               Edit
                             </button>
                           </Link>
- {/* Approve button  */}
-                          <button className="btn-xs bg-blue-500 rounded-lg font-semibold uppercase hover:bg-blue-800 hover:text-white">
+                          {/* Approve button  */}
+                          <button 
+                          onClick={() => handleApprove(student.id)}
+                          className="btn-xs bg-blue-500 rounded-lg font-semibold uppercase hover:bg-blue-800 hover:text-white">
                             Approve
                           </button>
- {/* Delete button  */}
+                          {/* Delete button  */}
                           <button
                             onClick={() => handleDelete(student.id)}
                             className="btn-xs bg-red-500 rounded-lg font-semibold uppercase hover:bg-red-800 hover:text-white"
@@ -183,12 +220,7 @@ const PendingStudent = () => {
                         </td>
                       </tr>
                     ))}
-                     {/* Edit button  */}
-                     <Link to="/studentEdit">
-                            <button className="btn-xs bg-green-500 rounded-lg font-semibold uppercase hover:bg-green-800 hover:text-white">
-                              Edit
-                            </button>
-                          </Link>
+                  
                 </tbody>
               </table>
             </div>

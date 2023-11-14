@@ -5,9 +5,14 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const StudentEdit = () => {
+  const {studentId} = useParams();
+  // const [studentData, setStudentData] = useState([]);
+
 // post method ------------
+  const [id, setid] = useState("");
   const [name, setName] = useState("");
   const [fatherName, setfatherName] = useState("");
   const [motherName, setmotherName] = useState("");
@@ -23,6 +28,9 @@ const StudentEdit = () => {
   const navigate = useNavigate();
 
 // handle control --------------------
+ const handleIdChange = (e) => {
+  setid(e.target.value);
+};
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -55,16 +63,16 @@ const StudentEdit = () => {
   };
 
   const handleImageChange = (e) => {
-    const selectedImage = e.target.files[0];
-    if (selectedImage) {
-      const reader = new FileReader();
+    setImage(e.target.files[0]);
+    // if (selectedImage) {
+    //   const reader = new FileReader();
 
-      reader.onload = (e) => {
-        const imagePreviewURL = e.target.result;
-        setImage(imagePreviewURL);
-      };
-      reader.readAsDataURL(selectedImage);
-    }
+    //   reader.onload = (e) => {
+    //     const imagePreviewURL = e.target.result;
+    //     setImage(imagePreviewURL);
+    //   };
+    //   reader.readAsDataURL(selectedImage);
+    // }
   };
 
   const handlephoneNoChange = (e) => {
@@ -73,9 +81,15 @@ const StudentEdit = () => {
 
   // handle button section ----------------
   const handleSubmit = (e) => {
-    e.preventDefault();
+    const user = JSON.parse(localStorage.getItem("user"));
+    const headers = {
+      accept: "application/json",
+      Authorization: "Bearer " + user.token,
+    };
 
+    e.preventDefault();
     const data = new FormData();
+    data.append("id", id);
     data.append("name", name);
     data.append("fatherName", fatherName);
     data.append("motherName", motherName);
@@ -90,57 +104,81 @@ const StudentEdit = () => {
     data.append("section", section);
     console.log(data);
     console.log("Selected Image:", image);
-// post method ------------------------
-    axios.post('http://127.0.0.1:8000/api/student-reg', data,)
+
+    axios
+      .post("http://127.0.0.1:8000/api/student-update", data, {
+        headers: headers,
+      })
       .then((res) => {
-        console.log('Data:', res.data);
+        console.log("Data:", res.data);
+        setid("");
+        setName("");
+        setfatherName("");
+        setmotherName("");
+        setBirthDate("");
+        setEmail("");
+        setAddress("");
+        setphoneNo("");
+        setImage("");
+        setrollNo("");
+        setregNo("");
+        setwclass("");
+        setsection("");
         Swal.fire({
-          position: 'center',
-          icon: 'warning',
-          title: res.data.message,
+          position: "center",
+          icon: "success",
+          title: "updated Data successfully",
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate('/');
+        navigate("/allStudent");
       })
       .catch((error) => {
-        console.error('An error occurred:', error);
+        Swal.fire({
+          position: "center",
+          icon: "warning",
+          title: ("An error occurred:", error),
+          showConfirmButton: false,
+          timer: 1500,
+        });
       });
-    setName('');
-    setfatherName('');
-    setmotherName('');
-    setBirthDate('');
-    setEmail('');
-    setAddress('');
-    setphoneNo('');
-    setImage('');
-    setrollNo('');
-    setregNo('');
-    setwclass('');
-    setsection('');
-  };
+    }
+  
   // get method ----------------------
   useEffect(() => {
-  axios.get('')
-  .then((res) => {
-    const studentData = res.data;
-    setName(studentData.name);
-    setfatherName(studentData.fatherName);
-    setmotherName(studentData.motherName);
-    setBirthDate(studentData.birthDate);
-    setEmail(studentData.email);
-    setAddress(studentData.address);
-    setphoneNo(studentData.phoneNo);
-    setImage(studentData.image);
-    setrollNo(studentData.rollNo);
-    setregNo(studentData.regNo);
-    setwclass(studentData.wclass);
-    setsection(studentData.section);
-  })
-  .catch((error) => {
-    console.error('An error occurred while fetching data:', error);
-  });
-}, []);
+    const user = JSON.parse(localStorage.getItem("user"));
+    const headers = {
+      accept: "application/json",
+      Authorization: "Bearer " + user.token,
+    };
+  
+    axios
+      .get(`http://127.0.0.1:8000/api/student-edit/${studentId}`, {
+        headers: headers,
+      })
+      .then((response) => {
+        // Assuming the response contains the student data
+        const studentData = response.data.user;
+        setid(studentData.id)
+        setName(studentData.name);
+        setfatherName(studentData.fatherName);
+        setmotherName(studentData.motherName);
+        setBirthDate(studentData.birthDate);
+        setEmail(studentData.email);
+        setAddress(studentData.address);
+        setphoneNo(studentData.phoneNo);
+        setImage(studentData.image);
+        setrollNo(studentData.rollNo);
+        setregNo(studentData.regNo);
+        setwclass(studentData.wclass);
+        setsection(studentData.section);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  
+  }, [studentId]); 
+  
 
   return (
     <div className="flex justify-between">
@@ -164,13 +202,28 @@ const StudentEdit = () => {
 {/* form section  */}
 <form
           onSubmit={handleSubmit}
+          encType="multipart/form-data"
           className="bg-gray-100 drop-shadow-2xl rounded-xl px-8 pt-6 pb-8 mb-4"
         >
+          {/* id section   */}
+          <div>
+            <label htmlFor="id"></label>
+            <input
+              
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-3"
+              // placeholder="Add Name"
+              type="hidden"
+              name="id"
+              id="id"
+              value={id}
+              onChange={handleIdChange}
+            />
+          </div>
           {/* name section   */}
           <div>
             <label htmlFor="name">Name:</label>
             <input
-              required
+              
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-3"
               // placeholder="Add Name"
               type="text"
@@ -186,7 +239,7 @@ const StudentEdit = () => {
               {/* eslint-disable-next-line react/no-unescaped-entities */}
               <label htmlFor="fatherName">Father's Name:</label>
               <input
-                required
+                
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 // placeholder="Add Father Name"
                 type="text"
@@ -216,7 +269,7 @@ const StudentEdit = () => {
             <div>
               <label htmlFor="phoneNo">Phone Number:</label>
               <input
-                required
+                
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 // placeholder="Add Phone Number"
                 type="number"
@@ -244,7 +297,7 @@ const StudentEdit = () => {
             <div>
               <label htmlFor="email">Email:</label>
               <input
-                required
+                
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 // placeholder="Add Email"
                 type="email"
@@ -273,7 +326,7 @@ const StudentEdit = () => {
             <div>
               <label htmlFor="rollNo">Roll:</label>
               <input
-                required
+                
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 // placeholder="Add Roll Number"
                 type="number"
@@ -286,7 +339,7 @@ const StudentEdit = () => {
             <div>
               <label htmlFor="regNo">Registration:</label>
               <input
-                required
+                
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 // placeholder="Add Registration Number"
                 type="number"
@@ -304,7 +357,7 @@ const StudentEdit = () => {
             <div>
               <label htmlFor="wclass">Class:</label>
               <input
-                required
+                
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 // placeholder="Add Class"
                 type="wclass"
@@ -332,10 +385,10 @@ const StudentEdit = () => {
           <div>
             <label htmlFor="file">Picture: </label> <br />
             <input
-              required
+            
               className="file-input file-input-bordered file-input-primary w-full max-w-lg"
               type="file"
-              name="image"
+              name="file"
               id="file"
               // value={image}
               onChange={handleImageChange}
