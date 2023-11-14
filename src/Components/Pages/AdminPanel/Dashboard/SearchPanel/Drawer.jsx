@@ -60,11 +60,11 @@ const Drawer = () => {
             </li>
 
             <li className="font-semibold text-lg mb-3">
-              <span className="rounded-r-full bg-[#191c24] p-2 border-l-4 border-gray-500"><IoIosSpeedometer className="text-gray-500" size={20} /> Routine</span>
+              <span className="rounded-r-full bg-[#191c24] p-2 border-l-4 border-gray-500"><IoIosSpeedometer className="text-gray-500" size={20} /><Link to="/adminRoutines">Routine</Link></span>
             </li>
 
             <li className="font-semibold text-lg mb-3">
-              <span className="rounded-r-full bg-[#191c24] p-2 border-l-4 border-teal-500"><IoIosSpeedometer className="text-teal-500" size={20} /> Syllubus</span>
+              <span className="rounded-r-full bg-[#191c24] p-2 border-l-4 border-teal-500"><IoIosSpeedometer className="text-teal-500" size={20} /> <Link to="/adminSyllabus">Syllabus</Link></span>
             </li>
 
             <li className="font-semibold text-lg mb-3">

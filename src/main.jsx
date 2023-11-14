@@ -37,6 +37,12 @@ import Teachers from "./Components/Pages/About/Teachers";
 import AdminNotices from "./Components/Pages/AdminPanel/Navigation/AdminNotices";
 import AdminNoticesAdd from "./Components/Pages/AdminPanel/Navigation/AdminNoticeAdd";
 import AdminNoticesEdit from "./Components/Pages/AdminPanel/Navigation/AdminNoticesEdit";
+import AdminRoutine from "./Components/Pages/AdminPanel/Navigation/AdminRoutine";
+import AdminRoutineAdd from "./Components/Pages/AdminPanel/Navigation/AdminRoutineAdd";
+import AdminRoutineEdit from "./Components/Pages/AdminPanel/Navigation/AdminRoutineEdit";
+import AdminSyllabus from "./Components/Pages/AdminPanel/Navigation/AdminSyllabus";
+import AdminSyllabusAdd from "./Components/Pages/AdminPanel/Navigation/AdminSyllabusAdd";
+import AdminSyllabusEdit from "./Components/Pages/AdminPanel/Navigation/AdminSyllabusEdit";
 
 const router = createBrowserRouter([
   {
@@ -180,7 +186,32 @@ const router = createBrowserRouter([
       {
         path:"/adminNoticesEdit/:noticeId",
         element:<AdminNoticesEdit/>
+      },
+      {
+        path:"/adminRoutines",
+        element:<AdminRoutine/>
+      },
+      {
+        path:"/adminRoutineAdd",
+        element:<AdminRoutineAdd/>
+      },
+      {
+        path:"/adminRoutineEdit/:routineId",
+        element:<AdminRoutineEdit/>
+      },
+      {
+        path:"/adminSyllabus",
+        element:<AdminSyllabus/>
+      },
+      {
+        path:"/adminSyllabusAdd",
+        element:<AdminSyllabusAdd/>
+      },
+      {
+        path:"/adminSyllabusEdit/:syllabusId",
+        element:<AdminSyllabusEdit/>
       }
+
     ],
   },
 ]);
