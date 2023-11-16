@@ -81,13 +81,19 @@ const ApprovedPayment = () => {
 
   const handleClassChange = (event) => {
     const selectedClass = event.target.value;
-    setSelectedClass(selectedClass);
 
-    const filtered = apprPayments.filter(
-      (payment) => payment.class === selectedClass
-    );
-    setFilteredPayments(filtered);
-    console.log(filtered)
+    // If "All" is selected, show all data
+    if (selectedClass === "All") {
+      setFilteredPayments(apprPayments);
+    } else {
+      // Filter data based on the selected class
+      const filtered = apprPayments.filter(
+        (payment) => payment.class === selectedClass
+      );
+      setFilteredPayments(filtered);
+    }
+
+    setSelectedClass(selectedClass);
   };    
 
   return (
@@ -122,6 +128,7 @@ const ApprovedPayment = () => {
             onChange={handleClassChange}
                 className=" px-3 py-1 rounded-lg text-sm font-medium outline-none"
               >
+                <option value="All">All</option>
                 <option value="1">Class 1</option>
                 <option value="2">Class 2</option>
                 <option value="3">Class 3</option>
@@ -176,7 +183,8 @@ const ApprovedPayment = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredPayments.length > 0
+                  {
+                  filteredPayments.length > 0
             ? filteredPayments.map((payment, index) => (
                       <tr key={payment.id}>
                         <td>{index + 1}</td>
@@ -192,16 +200,18 @@ const ApprovedPayment = () => {
                             onClick={() => handleDetail(payment.id)}
                             className="btn-xs bg-blue-500 rounded-lg font-semibold uppercase hover:bg-blue-800 hover:text-white"
                           >
-                            Details
+                            Payment History
                           </button>
                         </td>
                       </tr>
                     ))
-                    : <tr>
+                    : 
+                 <tr>   
                     <td colSpan="8" className="text-center">
                       No payments for the selected class.
                     </td>
-                  </tr>}
+                  </tr>
+                  }
                 </tbody>
               </table>
             </div>
