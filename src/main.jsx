@@ -43,6 +43,8 @@ import AdminRoutineEdit from "./Components/Pages/AdminPanel/Navigation/AdminRout
 import AdminSyllabus from "./Components/Pages/AdminPanel/Navigation/AdminSyllabus";
 import AdminSyllabusAdd from "./Components/Pages/AdminPanel/Navigation/AdminSyllabusAdd";
 import AdminSyllabusEdit from "./Components/Pages/AdminPanel/Navigation/AdminSyllabusEdit";
+import PendingPayment from "./Components/Pages/AdminPanel/Navigation/PendingPayment";
+import ApprovedPayment from "./Components/Pages/AdminPanel/Navigation/ApprovedPayment";
 
 const router = createBrowserRouter([
   {
@@ -210,6 +212,14 @@ const router = createBrowserRouter([
       {
         path:"/adminSyllabusEdit/:syllabusId",
         element:<AdminSyllabusEdit/>
+      },
+      {
+        path:"/pendingPayment",
+        element:<PendingPayment/>
+      },
+      {
+        path:"/approvedPayment",
+        element:<ApprovedPayment/>
       }
 
     ],

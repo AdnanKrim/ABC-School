@@ -29,7 +29,7 @@ const StudentDetails = () => {
                 Authorization: 'Bearer ' + user.token
             };
 
-            axios.get(`http://sml4kzlfjc.ap.loclx.io/api/student-detail`, {
+            axios.get(`http://127.0.0.1:8000/api/student-detail`, {
                 headers: headers
             })
                 .then((res) => { setStudentData(res.data); })
@@ -45,7 +45,7 @@ const StudentDetails = () => {
                 accept: 'application/json',
                 Authorization: 'Bearer ' + user.token
             };
-        axios.post(`http://sml4kzlfjc.ap.loclx.io/api/student-logout`,null, {
+        axios.post(`http://127.0.0.1:8000/api/student-logout`,null, {
             headers: headers
         })
         .then(res => {

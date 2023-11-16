@@ -29,7 +29,9 @@ const Layout = () => {
         location.pathname.includes('adminRoutineEdit') ||      
         location.pathname.includes('adminSyllabus')   ||    
         location.pathname.includes('adminSyllabusAdd') ||      
-        location.pathname.includes('adminSyllabusEdit')       
+        location.pathname.includes('adminSyllabusEdit') ||      
+        location.pathname.includes('pendingPayment')  ||     
+        location.pathname.includes('approvedPayment')       
 
     return (
         <div>

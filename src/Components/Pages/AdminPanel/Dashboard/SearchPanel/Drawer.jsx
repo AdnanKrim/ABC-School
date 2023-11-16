@@ -67,9 +67,25 @@ const Drawer = () => {
               <span className="rounded-r-full bg-[#191c24] p-2 border-l-4 border-teal-500"><IoIosSpeedometer className="text-teal-500" size={20} /> <Link to="/adminSyllabus">Syllabus</Link></span>
             </li>
 
-            <li className="font-semibold text-lg mb-3">
-              <span className="rounded-r-full bg-[#191c24] p-2 border-l-4 border-pink-500"><IoIosSpeedometer className="text-pink-500" size={20} /> Accounts</span>
-            </li>
+            <details className="dropdown mb-3">
+              <summary className=" rounded-r-full bg-[#191c24] p-2 border-l-4 border-blue-500 w-full btn text-white hover:btn-ghost ">
+              <IoIosSpeedometer className="text-violet-500 -ms-24" size={20} />
+               Payment Fees <MdArrowDropDown size={20} />
+              </summary>
+              <ul className="p-2 shadow menu dropdown-content z-[1] bg-blue-400 border rounded-box w-52 ">
+                <Link to="/pendingPayment">
+                  <li className="py-2 font-bold text-md hover:bg-blue-500 rounded-xl ps-2">
+                    Pending Payment
+                  </li>
+                </Link>
+                <hr className="mt-1" />
+                <Link to="/approvedPayment">
+                  <li className="py-2 font-bold text-md hover:bg-blue-500 rounded-xl ps-2">
+                    Approved Payment
+                  </li>
+                </Link>
+              </ul>
+            </details>
 
             <li className="font-semibold text-lg mb-3">
               <span className="rounded-r-full bg-[#191c24] p-2 border-l-4 border-indigo-500"><IoIosSpeedometer className="text-indigo-500" size={20} />Examination</span>
