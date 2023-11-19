@@ -2,13 +2,13 @@ import SearchPanel from "../Dashboard/SearchPanel/SearchPanel";
 import Drawer from "../Dashboard/SearchPanel/Drawer";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { BsCheckLg } from "react-icons/bs";
 
 const ApprovedPayment = () => {
   const [apprPayments, setApprPayments] = useState([]);
-  const [selectedClass, setSelectedClass] = useState("Class 1");
+  const [selectedClass, setSelectedClass] = useState("All");
   const [filteredPayments, setFilteredPayments] = useState([]);
   const navigate = useNavigate();
 
@@ -35,6 +35,7 @@ const ApprovedPayment = () => {
         })
         .then((res) => {
           setApprPayments(res.data.payment);
+          setFilteredPayments(res.data.payment);
         })
         .catch((error) => {
           console.log(error);
@@ -44,40 +45,40 @@ const ApprovedPayment = () => {
   console.log(apprPayments);
 
   // approval section
-  const handleDetail = (paymentId) => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const headers = {
-      accept: "application/json",
-      Authorization: "Bearer " + user.token,
-    };
+  // const handleDetail = (paymentId) => {
+  //   const user = JSON.parse(localStorage.getItem("user"));
+  //   const headers = {
+  //     accept: "application/json",
+  //     Authorization: "Bearer " + user.token,
+  //   };
 
-    axios
-      .get(`http://127.0.0.1:8000/api/payment-detail/${paymentId}`, {
-        headers: headers,
-      })
-      .then(() => {
-        setApprPayments((prevPayments) =>
-          prevPayments.filter((payment) => payment.payment_id !== paymentId)
-        );
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "payment deleted successfully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        window.location.reload();
-      })
-      .catch((error) => {
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: "Error deleting payment",
-          text: error.message,
-          showConfirmButton: true,
-        });
-      });
-  };
+  //   axios
+  //     .get(`http://127.0.0.1:8000/api/payment-detail/${paymentId}`, {
+  //       headers: headers,
+  //     })
+  //     .then(() => {
+  //       setApprPayments((prevPayments) =>
+  //         prevPayments.filter((payment) => payment.payment_id !== paymentId)
+  //       );
+  //       Swal.fire({
+  //         position: "center",
+  //         icon: "success",
+  //         title: "payment deleted successfully",
+  //         showConfirmButton: false,
+  //         timer: 1500,
+  //       });
+  //       window.location.reload();
+  //     })
+  //     .catch((error) => {
+  //       Swal.fire({
+  //         position: "center",
+  //         icon: "error",
+  //         title: "Error deleting payment",
+  //         text: error.message,
+  //         showConfirmButton: true,
+  //       });
+  //     });
+  // };
 
   const handleClassChange = (event) => {
     const selectedClass = event.target.value;
@@ -94,7 +95,7 @@ const ApprovedPayment = () => {
     }
 
     setSelectedClass(selectedClass);
-  };    
+  };  
 
   return (
     <div className="flex justify-between">
@@ -195,13 +196,14 @@ const ApprovedPayment = () => {
                         <td>{payment.amount}</td>
                         <td>{payment.months.join(',')}</td>
                         <td className="flex gap-2">
-                          {/* Approve button  */}
-                          <button
-                            onClick={() => handleDetail(payment.id)}
-                            className="btn-xs bg-blue-500 rounded-lg font-semibold uppercase hover:bg-blue-800 hover:text-white"
-                          >
-                            Payment History
-                          </button>
+                          
+                           {/* Details button  */}
+                           <Link to={`/paymentHistory/${payment.studentId}`}>
+                            <button className="btn-xs bg-blue-500 rounded-lg font-semibold uppercase hover:bg-blue-800 hover:text-white">
+                            Payment history
+                            </button>
+                          </Link>
+                          
                         </td>
                       </tr>
                     ))
