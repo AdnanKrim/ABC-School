@@ -9,7 +9,7 @@ const Routine = () => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/api/routine-listApi")
+      .get("https://backend.ap.loclx.io/api/routine-listApi")
       .then((res) => {
         setRoutines(res.data.routine);
       })

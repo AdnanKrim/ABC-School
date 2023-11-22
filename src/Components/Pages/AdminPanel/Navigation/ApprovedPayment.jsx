@@ -30,7 +30,7 @@ const ApprovedPayment = () => {
         Authorization: "Bearer " + user.token,
       };
       axios
-        .get(`http://127.0.0.1:8000/api/approved-payment`, {
+        .get(`https://backend.ap.loclx.io/api/approved-payment`, {
           headers: headers,
         })
         .then((res) => {
@@ -53,7 +53,7 @@ const ApprovedPayment = () => {
   //   };
 
   //   axios
-  //     .get(`http://127.0.0.1:8000/api/payment-detail/${paymentId}`, {
+  //     .get(`https://backend.ap.loclx.io/api/payment-detail/${paymentId}`, {
   //       headers: headers,
   //     })
   //     .then(() => {

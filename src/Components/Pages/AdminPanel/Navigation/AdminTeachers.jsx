@@ -35,7 +35,7 @@ const AdminTeachers = () => {
       };
 
       axios
-        .get(`http://127.0.0.1:8000/api/teacher-listApi`, {
+        .get(`https://backend.ap.loclx.io/api/teacher-listApi`, {
           headers: headers,
         })
         .then((res) => {
@@ -58,7 +58,7 @@ const AdminTeachers = () => {
     };
 
     axios
-      .delete(`http://127.0.0.1:8000/api/teacher-delete/${teacherId}`, {
+      .delete(`https://backend.ap.loclx.io/api/teacher-delete/${teacherId}`, {
         headers: headers,
       })
       .then(() => {

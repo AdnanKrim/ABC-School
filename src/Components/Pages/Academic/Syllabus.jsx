@@ -9,7 +9,7 @@ const Syllabus = () => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/api/syllabus-listApi")
+      .get("https://backend.ap.loclx.io/api/syllabus-listApi")
       .then((res) => {
         setSyllabuss(res.data.syllabus);
       })

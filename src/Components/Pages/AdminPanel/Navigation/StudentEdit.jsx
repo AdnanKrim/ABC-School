@@ -106,7 +106,7 @@ const StudentEdit = () => {
     console.log("Selected Image:", image);
 
     axios
-      .post("http://127.0.0.1:8000/api/student-update", data, {
+      .post("https://backend.ap.loclx.io/api/student-update", data, {
         headers: headers,
       })
       .then((res) => {
@@ -153,7 +153,7 @@ const StudentEdit = () => {
     };
   
     axios
-      .get(`http://127.0.0.1:8000/api/student-edit/${studentId}`, {
+      .get(`https://backend.ap.loclx.io/api/student-edit/${studentId}`, {
         headers: headers,
       })
       .then((response) => {

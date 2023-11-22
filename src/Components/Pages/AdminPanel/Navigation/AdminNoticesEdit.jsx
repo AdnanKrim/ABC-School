@@ -45,7 +45,7 @@ const AdminNoticesEdit = () => {
       };
   
       axios
-        .get(`http://127.0.0.1:8000/api/notice-edit/${noticeId}`, {
+        .get(`https://backend.ap.loclx.io/api/notice-edit/${noticeId}`, {
           headers: headers,
         })
         .then((response) => {
@@ -80,7 +80,7 @@ const AdminNoticesEdit = () => {
       console.log("Selected pdf:", pdf);
       // post method --------------
       axios
-        .post("http://127.0.0.1:8000/api/notice-update", data, {
+        .post("https://backend.ap.loclx.io/api/notice-update", data, {
           headers: headers,
         })
         .then((res) => {

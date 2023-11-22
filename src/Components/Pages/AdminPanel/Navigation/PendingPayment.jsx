@@ -27,7 +27,7 @@ const PendingPayment = () => {
         Authorization: "Bearer " + user.token,
       };
       axios
-        .get(`http://127.0.0.1:8000/api/pending-payment`, {
+        .get(`https://backend.ap.loclx.io/api/pending-payment`, {
           headers: headers,
         })
         .then((res) => {
@@ -49,7 +49,7 @@ const PendingPayment = () => {
     };
 
     axios
-      .get(`http://127.0.0.1:8000/api/payment-approve/${paymentId}`, {
+      .get(`https://backend.ap.loclx.io/api/payment-approve/${paymentId}`, {
         headers: headers,
       })
       .then(() => {
@@ -85,7 +85,7 @@ const PendingPayment = () => {
     };
 
     axios
-      .delete(`http://127.0.0.1:8000/api/delete-payment/${paymentId}`, {
+      .delete(`https://backend.ap.loclx.io/api/delete-payment/${paymentId}`, {
         headers: headers,
       })
       .then(() => {

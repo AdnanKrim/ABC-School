@@ -20,7 +20,7 @@ const AdminPayment = () => {
 
     // get method -------------------
     axios
-      .get(`http://127.0.0.1:8000/api/admin-student-detail/${studentId}`, {
+      .get(`https://backend.ap.loclx.io/api/admin-student-detail/${studentId}`, {
         headers: headers,
       })
       .then((res) => {

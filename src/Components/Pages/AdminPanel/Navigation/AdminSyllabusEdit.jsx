@@ -45,7 +45,7 @@ const AdminSyllabusEdit = () => {
       };
   
       axios
-        .get(`http://127.0.0.1:8000/api/syllabus-edit/${syllabusId}`, {
+        .get(`https://backend.ap.loclx.io/api/syllabus-edit/${syllabusId}`, {
           headers: headers,
         })
         .then((response) => {
@@ -80,7 +80,7 @@ const AdminSyllabusEdit = () => {
       console.log("Selected pdf:", pdf);
       // post method --------------
       axios
-        .post("http://127.0.0.1:8000/api/syllabus-update", data, {
+        .post("https://backend.ap.loclx.io/api/syllabus-update", data, {
           headers: headers,
         })
         .then((res) => {

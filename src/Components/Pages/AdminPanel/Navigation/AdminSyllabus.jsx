@@ -33,7 +33,7 @@ const AdminSyllabus = () => {
       };
 // get syllabus data ---------------
       axios
-        .get(`http://127.0.0.1:8000/api/syllabus-listApi`, {
+        .get(`https://backend.ap.loclx.io/api/syllabus-listApi`, {
           headers: headers,
         })
         .then((res) => {
@@ -56,7 +56,7 @@ const AdminSyllabus = () => {
     };
 
     axios
-      .delete(`http://127.0.0.1:8000/api/syllabus-delete/${syllabusId}`, {
+      .delete(`https://backend.ap.loclx.io/api/syllabus-delete/${syllabusId}`, {
         headers: headers,
       })
       .then(() => {

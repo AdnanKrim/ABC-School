@@ -49,7 +49,7 @@ const AdminRoutineAdd = () => {
         };
   // get method -------------------
         axios
-          .get(`http://127.0.0.1:8000/api/login`, {
+          .get(`https://backend.ap.loclx.io/api/login`, {
             headers: headers,
           })
           .then((res) => {
@@ -80,7 +80,7 @@ const AdminRoutineAdd = () => {
     console.log("Selected pdf:", pdf);
     // post method --------------
     axios
-      .post("http://127.0.0.1:8000/api/add-routine", data, {
+      .post("https://backend.ap.loclx.io/api/add-routine", data, {
         headers: headers,
       })
       .then((res) => {

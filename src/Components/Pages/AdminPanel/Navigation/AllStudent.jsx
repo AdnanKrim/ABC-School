@@ -29,7 +29,7 @@ const AllStudent = () => {
       };
 
       axios
-        .get(`http://127.0.0.1:8000/api/student-list`, {
+        .get(`https://backend.ap.loclx.io/api/student-list`, {
           headers: headers,
         })
         .then((res) => {
@@ -51,7 +51,7 @@ const AllStudent = () => {
       };
   
       axios
-        .delete(`http://127.0.0.1:8000/api/student-delete/${studentId}`, {
+        .delete(`https://backend.ap.loclx.io/api/student-delete/${studentId}`, {
           headers: headers,
         })
         .then(() => {

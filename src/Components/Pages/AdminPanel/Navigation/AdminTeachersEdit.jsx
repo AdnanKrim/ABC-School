@@ -62,7 +62,7 @@ const AdminTeachersEdit = () => {
     };
 
     axios
-      .get(`http://127.0.0.1:8000/api/teacher-edit/${teacherId}`, {
+      .get(`https://backend.ap.loclx.io/api/teacher-edit/${teacherId}`, {
         headers: headers,
       })
       .then((response) => {
@@ -101,7 +101,7 @@ const AdminTeachersEdit = () => {
     console.log("Selected Image:", image);
     // post method --------------
     axios
-      .post("http://127.0.0.1:8000/api/teacher-update", data, {
+      .post("https://backend.ap.loclx.io/api/teacher-update", data, {
         headers: headers,
       })
       .then((res) => {

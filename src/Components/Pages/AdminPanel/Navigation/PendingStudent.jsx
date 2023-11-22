@@ -28,7 +28,7 @@ const PendingStudent = () => {
         Authorization: "Bearer " + user.token,
       };
       axios
-        .get(`http://127.0.0.1:8000/api/pending-student-list`, {
+        .get(`https://backend.ap.loclx.io/api/pending-student-list`, {
           headers: headers,
         })
         .then((res) => {
@@ -50,7 +50,7 @@ const PendingStudent = () => {
     };
 
     axios
-      .delete(`http://127.0.0.1:8000/api/student-delete/${studentId}`, {
+      .delete(`https://backend.ap.loclx.io/api/student-delete/${studentId}`, {
         headers: headers,
       })
       .then(() => {
@@ -86,7 +86,7 @@ const PendingStudent = () => {
     };
 
     axios
-      .get(`http://127.0.0.1:8000/api/student-approve/${studentId}`, {
+      .get(`https://backend.ap.loclx.io/api/student-approve/${studentId}`, {
         headers: headers,
       })
       .then(() => {

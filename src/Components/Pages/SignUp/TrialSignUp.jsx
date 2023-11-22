@@ -61,7 +61,7 @@ const TrialSignUp = () => {
     data.append('image', image);
     console.log(data);
     
-    axios.post('http://127.0.0.1:8000/api/student-reg', data, {
+    axios.post('https://backend.ap.loclx.io/api/student-reg', data, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },

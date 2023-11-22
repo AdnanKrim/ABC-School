@@ -9,7 +9,7 @@ const Teachers = () => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/api/teacher-listApi")
+      .get("https://backend.ap.loclx.io/api/teacher-listApi")
       .then((res) => {
         setTeachers(res.data.teacher);
       })

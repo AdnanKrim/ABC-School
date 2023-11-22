@@ -32,7 +32,7 @@ const AdminNotices = () => {
       };
 // get notice data ---------------
       axios
-        .get(`http://127.0.0.1:8000/api/notice-listApi`, {
+        .get(`https://backend.ap.loclx.io/api/notice-listApi`, {
           headers: headers,
         })
         .then((res) => {
@@ -55,7 +55,7 @@ const AdminNotices = () => {
     };
 
     axios
-      .delete(`http://127.0.0.1:8000/api/notice-delete/${noticeId}`, {
+      .delete(`https://backend.ap.loclx.io/api/notice-delete/${noticeId}`, {
         headers: headers,
       })
       .then(() => {

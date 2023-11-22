@@ -60,7 +60,7 @@ const AdminTeachersAdd = () => {
         };
     
         axios
-          .get(`http://127.0.0.1:8000/api/login`, {
+          .get(`https://backend.ap.loclx.io/api/login`, {
             headers: headers,
           })
           .then((res) => {
@@ -93,7 +93,7 @@ const handleSubmit = (e) => {
   console.log("Selected Image:", image);
   // post method --------------
   axios
-    .post("http://127.0.0.1:8000/api/add-teacher", data, {
+    .post("https://backend.ap.loclx.io/api/add-teacher", data, {
       headers: headers,
     })
     .then((res) => {

@@ -32,7 +32,7 @@ const AdminRoutine = () => {
       };
 // get routine data ---------------
       axios
-        .get(`http://127.0.0.1:8000/api/routine-listApi`, {
+        .get(`https://backend.ap.loclx.io/api/routine-listApi`, {
           headers: headers,
         })
         .then((res) => {
@@ -55,7 +55,7 @@ const AdminRoutine = () => {
     };
 
     axios
-      .delete(`http://127.0.0.1:8000/api/routine-delete/${routineId}`, {
+      .delete(`https://backend.ap.loclx.io/api/routine-delete/${routineId}`, {
         headers: headers,
       })
       .then(() => {

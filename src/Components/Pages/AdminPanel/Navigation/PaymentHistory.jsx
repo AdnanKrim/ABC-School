@@ -22,7 +22,7 @@ const PaymentHistory = () => {
 
     // get method -------------------
     axios
-      .get(`http://127.0.0.1:8000/api/payment-history/${studentId}`, {
+      .get(`https://backend.ap.loclx.io/api/payment-history/${studentId}`, {
         headers: headers,
       })
       .then((res) => {

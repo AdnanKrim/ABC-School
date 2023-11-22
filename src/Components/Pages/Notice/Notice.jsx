@@ -8,7 +8,7 @@ const Notice = () => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/api/notice-listApi")
+      .get("https://backend.ap.loclx.io/api/notice-listApi")
       .then((res) => {
         setNotices(res.data.notice);
       })

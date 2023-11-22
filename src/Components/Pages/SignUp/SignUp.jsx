@@ -74,7 +74,7 @@ const SignUP = () => {
       'Content-Type': 'multipart/form-data'
     };
 
-    axios.post('http://127.0.0.1:8000/api/student-reg', data,{
+    axios.post('https://backend.ap.loclx.io/api/student-reg', data,{
       headers: headers,
     })
       .then((res) => {
